@@ -15,10 +15,9 @@
                     @endif
                     <p>{{ $user->gender}}/{{ $user->born}}</p>
                     <p>自己紹介:{{ $user->myself}}</p>
-                    <p>これまでに登録した人数{{ $user->giving_users->count() }}</p>
-                    <p>これまでに登録したお祝い数{{ $user->anniversaries->count()}}</p>
+
                     <p>これまでに登録したプレゼント数</p>
-                    <p>獲得したいいね数{{ $user->favorite_users->count()}}</p>
+                    <p>獲得したいいね数</p>
                 </div>
             </div>
         </div>

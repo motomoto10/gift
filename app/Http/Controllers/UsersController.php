@@ -41,7 +41,7 @@ class UsersController extends Controller
     {
         $user = User::findOrFail($id);
         
-        $genders = Giving_user::$genders;
+        $genders = User::$genders;
         
         return view('users.edit',compact('user','genders'));
         
@@ -69,76 +69,6 @@ class UsersController extends Controller
         
     }
     
-    public function giving_users($user_id)
-    {
-        $user = User::findOrFail($user_id);
-        
-        // 関係するモデルの件数をロード
-        $user->loadRelationshipCounts();
-        // 登録されたユーザーを取得
-        $giving_users = Giving_user::where('user_id',$user_id)->get();
 
-        // フォロー一覧ビューでそれらを表示
-        return view('users.giving_user',[
-            'user' => $user,
-            'giving_users' => $giving_users,
-        ]);
-    }
-    
-    public function anniversaries($user_id)
-    {
-        $user = User::findOrFail($user_id);
-        
-        // 関係するモデルの件数ロード
-        $user->loadRelationshipCounts();
-        // 登録されたユーザーを取得
-        $giving_users = Giving_user::where('user_id',$user_id)->get();
-        
-        // 一覧ビューでそれらを表示
-        return view('users.anniversary',[
-            'user' => $user,
-            'giving_users' => $giving_users,
-        ]);
-    }
-    
-    public function presents($user_id)
-    {
-        $user = User::findOrFail($user_id);
-        
-        // 関係するモデルの件数をロード
-        $user->loadRelationshipCounts();
-        // ユーザの投稿したユーザーを取得
-        $giving_users = Giving_user::where('user_id',$user_id)->get();
-        
-        $anniversary = Anniversary::where('user_id',$user_id)->get();
-        
-        $anniversaryId = $anniversary->pluck('anniversary_id')->toArray();
-        
-        $present = Present::where('anniversary_id',$anniversaryId)->get();
-        
-        // フォロー一覧ビューでそれらを表示
-        return view('users.presents',[
-            'user' => $user,
-            'giving_users' => $giving_users,
-            'anniversary'=> $anniversary,
-            'present' => $present,
-        ]);
-    }
-    
-    public function presentlist()
-    {
-        
-        $presents = \App\Present::get();
-        
-        
-        $anniversaryId = $presents->pluck('anniversary_id')->toArray();
-        
-        $anniversary = \App\Anniversary::findOrFail($anniversaryId);
-        
-        // 一覧ビューでそれらを表示
-        return view('users.presentlist',[
-            'anniversaries' => $anniversary,
-        ]);
-    }
 
 }

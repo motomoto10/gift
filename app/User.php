@@ -42,74 +42,13 @@ class User extends Authenticatable
     ];
     
     
-    public function giving_users()
+    public function gifts()
     {
-        return $this->hasMany(Giving_user::class);
+        return $this->hasMany(Gift::class);
     }
     
-    public function anniversaries()
+        public function loadRelationshipCounts()
     {
-        return $this->hasManyThrough('App\Anniversary','App\Giving_user','user_id','giving_user_id','id','id');
+        $this->loadCount('gifts');
     }
-    
-    public function loadRelationshipCounts()
-    {
-        $this->loadCount('giving_users','favorites','comments','favorite_users');
-    }
-    
-    public function favorites()
-    {
-        return $this->belongsToMany(Present::class,'favorite_present', 'user_id','present_id')->withTimestamps();
-    }
-    
-    public function favorite($presentId)
-    {
-        // すでにいいねしているかの確認
-        $exist = $this->is_favorites($presentId);
-        
-        if($exist) {
-            return false;
-        }else {
-            $this->favorites()->attach($presentId);
-            return true;
-        }
-    }
-    
-    public function unfavorite($presentId)
-    {
-        // すでにいいねしているかの確認
-        $exist = $this->is_favorites($presentId);
-        
-        if($exist) {
-            $this->favorites()->detach($presentId);
-            return true;
-        }else {
-            return false;
-        }
-    }
-    
-    public function is_favorites($presentId)
-    {
-        // お気に入り中presenttの中に $presentIdのものが存在するか
-        return $this->favorites()->where('present_id', $presentId)->exists();
-    }
-    
-    public function favorite_users()
-    {
-        return $this->belongsToMany(Present::class,'favorite_present', 'user_id','present_id')->withTimestamps();
-    }
-    
-    public function favorite_presents()
-    {
-        // このユーザがお気に入り中のプレゼントのidを取得して配列にする
-        $presents = $this->favorite()->pluck('presents.id')->toArray();
-        // それらのユーザが所有する投稿に絞り込む
-        return Present::whereIn('present_id', $presentIds);
-    }
-    
-    public function comments()
-    {
-        return $this->belongsToMany(Present::class,'comments', 'user_id','present_id')->withTimestamps();
-    }
-    
 }

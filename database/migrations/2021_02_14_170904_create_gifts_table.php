@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAnniversariesTable extends Migration
+class CreateGiftsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,20 @@ class CreateAnniversariesTable extends Migration
      */
     public function up()
     {
-        Schema::create('anniversaries', function (Blueprint $table) {
+        Schema::create('gifts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('giving_user_id');
-            $table->date('day');
-            $table->string('anniversary');
+            $table->string('gift');
+            $table->string('relation')->nullable();
+            $table->string('anniversary')->nullable();
+            $table->string('gender')->nullable();
+            $table->string('old')->nullable();
+            $table->string('price')->nullable();
+            $table->date('day')->nullable();
+            $table->string('explain')->nullable();
             $table->timestamps();
             
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('giving_user_id')->references('id')->on('giving_users')->onDelete('cascade');
         });
     }
 
@@ -33,6 +37,6 @@ class CreateAnniversariesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('anniversaries');
+        Schema::dropIfExists('gifts');
     }
 }
