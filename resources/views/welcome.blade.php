@@ -10,7 +10,7 @@
             <h2 class="">贈ったプレゼントを登録しましょう</h2>
                 <!--プレゼントもらう人の登録フォームへ-->
                 <div class="col-sm my-2">{!! link_to_route('gifts.create', 'プレゼントを登録する', [], ['class' => 'btn-square-pop btn-hover']) !!}</div>
-
+                <div class="col-sm my-2">{!! link_to_route('gifts.index', 'プレゼントを確認する', [], ['class' => 'btn-square-pop btn-hover']) !!}</div>
             @else
             <div class="text-center">
                 <h1>ようこそ！<br>

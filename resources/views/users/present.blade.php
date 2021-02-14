@@ -2,22 +2,13 @@
     <div class="box-yellow">
         <div class="text-black text-center">
             <div>
-              <div>{!! (e($giving_user->name)) !!}</div>
-              <div>
-                <h5>{!! (e($giving_user->relation)) !!}の{!! (e($anniversary->anniversary)) !!}</h5>
-                <p>送った年：{!! (e($present->year)) !!}</p>
-                <p>プレゼント：{!! (e($present->present)) !!}</p>
-                <p>ーこのプレゼントへの思いー</p>
-                <p>{!! (e($present->explain)) !!}</p>
-                <p>いいねの数{{ $present->favorite->count()}}</p>
-                <p>コメントの数{{ $present->comment->count()}}</p>
-                <button class="btn btn-default col-sm">{!! link_to_route('presents.show', 'プレゼントの詳細', ['present' => $present->id,'anniversary' => $anniversary->id,'id' => $giving_user->id], ['class' => 'btn-flat-dashed-border']) !!}</button>
+                <div>{!! ($gift->gift) !!}</div>
                 <div>
-                @include('present_favorite.favorite_button')
-                @include('comments.comment_button')
+                <p>ーこのプレゼントへの思いー</p>
+                <p>{!! ($gift->explain) !!}</p>
+                <button class="btn btn-default col-sm">{!! link_to_route('gifts.show', 'プレゼントの詳細', ['gift' => $gift->id], ['class' => 'btn-flat-dashed-border']) !!}</button>
                 </div>
             </div>
-        </div>
         </div>
     </div>
 </div>

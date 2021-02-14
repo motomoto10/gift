@@ -13,4 +13,14 @@ class Gift extends Model
     {
         return $this->belongsTo(User::class);
     }
+    
+    public function favorite()
+    {
+        return $this->belongsToMany(User::class,'favorite_gift','gift_id', 'user_id')->withTimestamps();
+    }
+    
+    public function loadRelationshipCounts()
+    {
+        $this->loadCount(['favorite']);
+    }
 }

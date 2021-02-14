@@ -7,7 +7,7 @@
                 <h1>誰に送りますか？</h1>
                 <img class="w-25" src="{{ asset('img/present.png') }}">
             <div class="formarea container">
-                {!! Form::open(['route' => 'gifts.store']) !!}
+                {!! Form::open(['route' => ['gifts.update','gift' => $gift->id],'method'=>'put']) !!}
                     <div class="form-group row">
                         <label for="gift" class="col-sm-3 col-form-label">プレゼント：</label>
                         {!! Form::textarea('gift', old('gift'), ['class' => 'form-control col-sm-9', 'rows' => '1']) !!}

@@ -5,9 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\User;
-use App\Giving_user;
-use App\Anniversary;
-use App\Present;
 
 class UsersController extends Controller
 {
@@ -15,8 +12,6 @@ class UsersController extends Controller
     {
         $user = User::orderBy('id', 'desc')->paginate(20);
         
-        // ユーザの投稿の一覧を作成日時の降順で取得
-
         // ユーザ一覧ビューでそれを表示
         return view('users.index', [
             'users' => $user,
@@ -31,9 +26,12 @@ class UsersController extends Controller
         
         $user->loadRelationshipCounts();
         
+        $gifts = $user->gifts();
+        
         // ユーザ詳細ビューでそれを表示
         return view('users.show', [
             'user' => $user,
+            'gifts' => $gifts,
 
         ]);
     }
