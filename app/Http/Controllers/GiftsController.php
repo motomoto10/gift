@@ -21,7 +21,8 @@ class GiftsController extends Controller
     
     public function create()
     {
-
+        
+        
         return view('gifts.create');
     }
     
@@ -44,7 +45,6 @@ class GiftsController extends Controller
     {
         
         $gift = Gift::findOrFail($id);
-
 
         return view('gifts.show',[
             'gift' => $gift,

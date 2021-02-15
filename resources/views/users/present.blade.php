@@ -7,6 +7,7 @@
                 <p>ーこのプレゼントへの思いー</p>
                 <p>{!! ($gift->explain) !!}</p>
                 <button class="btn btn-default col-sm">{!! link_to_route('gifts.show', 'プレゼントの詳細', ['gift' => $gift->id], ['class' => 'btn-flat-dashed-border']) !!}</button>
+                @include('gift_favorite.favorite_button')
                 </div>
             </div>
         </div>
