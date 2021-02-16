@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Models\User;
+use Illuminate\Support\facades\Auth;
 
 class LoginController extends Controller
 {
@@ -36,5 +38,18 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+    
+    private const GUEST_USER_ID = 3;
+    
+    public function guestLogin()
+    {
+        // id = 3 のゲストユーザー情報が存在すれば、ゲストログインする
+        if (Auth::loginUsingId(self::GUEST_USER_ID)) {
+
+            return redirect('/');
+        }
+        
+        return redirect('/');
     }
 }
