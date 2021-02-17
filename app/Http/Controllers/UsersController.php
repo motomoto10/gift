@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Http\Requests\UserRequest;
+
 use App\User;
 
 class UsersController extends Controller
@@ -45,22 +47,13 @@ class UsersController extends Controller
         
     }
     
-        public function update(Request $request,$id)
+        public function update(UserRequest $request,$id)
     {
         if (\Auth::check()) {
             
-            \Auth::user();
-                
-            $request->validate([
-                'name' => 'required|max:255',
-            ]);
-            
             $user = User::findOrFail($id);
-            $user->name  = $request->name;
-            $user->gender  = $request->gender;
-            $user->born  = $request->born;
-            $user->myself  = $request->myself;
-            $user->save();
+            
+            $user->fill($request->validated())->save();
                 
             return redirect('/');
         }
