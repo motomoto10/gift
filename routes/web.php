@@ -30,6 +30,7 @@
         Route::group(['prefix' => 'gifts/{id}'],function() {
             Route::post('favorite', 'GiftfavoriteController@store')->name('gifts.favorite');
             Route::delete('unfavorite', 'GiftfavoriteController@destroy')->name('gifts.unfavorite');
+            Route::resource('comments', 'CommentsController', ['only' => ['store', 'destroy']]);
         });
         
         // プロフィール画像登録

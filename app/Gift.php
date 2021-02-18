@@ -23,4 +23,9 @@ class Gift extends Model
     {
         $this->loadCount(['favorite']);
     }
+    
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }
