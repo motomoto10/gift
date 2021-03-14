@@ -35,9 +35,16 @@
                         <button class="btn btn-default col-sm">{!! link_to_route('signup.get', '新規登録はこちらから！', [], ['class' => 'btn-square-pink']) !!}</button>
                         {{-- ログインページへのリンク --}}
                         <button class="btn btn-default col-sm">{!! link_to_route('login', 'ログインはこちらから！', [], ['class' => 'btn-square-green']) !!}</button>
+<<<<<<< HEAD
                         <!--ゲストログイン機能のリンク-->
                         <button class="btn btn-default col-sm">{!! link_to_route('login.guest', 'ゲストログインはこちらから！', [], ['class' => 'btn-square-pop']) !!}</button>
+=======
+                        {{-- ゲストログインページへのリンク --}}
+                        <button class="btn btn-default col-sm">{!! link_to_route('login.guest', 'ゲストログインはこちらから！', [], ['class' => 'btn-square-pop']) !!}</button>
+
+>>>>>>> 4cb2382947eed214a8dc8d0272268723d459254a
                     </div>
+                    
             @endif
         </div>
     </div>
