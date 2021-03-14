@@ -7,10 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-<<<<<<< HEAD
 
-=======
->>>>>>> 4cb2382947eed214a8dc8d0272268723d459254a
 
 class LoginController extends Controller
 {
