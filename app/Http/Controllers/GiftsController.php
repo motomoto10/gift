@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Gift;
+use App\Comment;
 
 
 class GiftsController extends Controller
@@ -21,21 +22,37 @@ class GiftsController extends Controller
     
     public function create()
     {
-        
-        
-        return view('gifts.create');
+    $genders = Gift::$genders;
+    $relation = Gift::$relation;
+    $old = Gift::$old;
+    $anniversaries = Gift::$anniversaries;
+    $prices = Gift::$prices;
+
+        return view('gifts.create',compact('genders','relation','old','anniversaries','prices'));
     }
     
     public function store(Request $request)
     {
         $request->validate([
             'gift' => 'required|max:25',
-            'explain' => 'required|max:25',
+            'explain' => 'max:255',
+            'gender' => 'max:255',
+            'relation' => 'max:255',
+            'old' => 'max:255',
+            'anniversary' => 'max:255',
+            'price' => 'max:255',
+            'day'=> 'max:255'
         ]);
         
         $request->user()->gifts()->create([
             'gift' => $request->gift,
             'explain' => $request->explain,
+            'gender' => $request->gender,
+            'relation' => $request->relation,
+            'old' => $request->old,
+            'anniversary' =>$request->anniversary,
+            'price' => $request->price,
+            'day' => $request->day,
             ]);
             
             return redirect('/');
@@ -45,9 +62,12 @@ class GiftsController extends Controller
     {
         
         $gift = Gift::findOrFail($id);
+        
+        $comments = Comment::where('gift_id',$id)->get();
 
         return view('gifts.show',[
             'gift' => $gift,
+            'comments' => $comments
         ]);
     }
     
@@ -55,7 +75,14 @@ class GiftsController extends Controller
     {
         $gift =Gift::findOrFail($id);
         
-        return view('gifts.edit',compact( 'gift'));
+        $genders = Gift::$genders;
+        $relation = Gift::$relation;
+        $old = Gift::$old;
+        $anniversaries = Gift::$anniversaries;
+        $prices = Gift::$prices;
+
+        return view('gifts.edit',compact('gift','genders','relation','old','anniversaries','prices'));
+        
     }
     
     public function update(Request $request,$id)

@@ -1,35 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row">
-        @include('users.card')
-        @include('users.navtab')
-    
-    
-    <div class="container">
+    <div class="center">
+        <div class="text-center">
+                <h1>さあ！<br>
+                プレゼントを送りましょう</h1>
+                <img class="w-25" src="{{ asset('img/present.png') }}">
+                
+            <div class="col-sm my-3">{!! link_to_route('gifts.create', 'プレゼントを登録する', [], ['class' => 'btn-square-pink btn-hover']) !!}</div>
+
+                
+            <h2 class="">あなたがいいねしたものはこちらです。</h2>
+
         <div class="row justify-content-center">
-            @foreach ($presents as $present)
-                <div class="col-sm-3 m-2 ">
-                    <div class="box-green">
-                        <div class="text-center">
-                            <p>{!! (e($present->anniversary->giving_user->user->name)) !!}から</p>
-                            <p>{!! (e($present->anniversary->giving_user->name)) !!}へのプレゼント</p>
-                            <p>関係性：{!! (e($present->anniversary->giving_user->relation)) !!}</p>
-                            <p>性別：{!! (e($present->anniversary->giving_user->gender)) !!}</p>
-                            <p>年齢：{!! (e($present->anniversary->giving_user->old)) !!}</p>
-                            <p>お祝い：{!! (e($present->anniversary->anniversary)) !!}</p>
-                            <p>日程：{!! (e($present->anniversary->day->format('n月j日') )) !!}</p>
-                            <p>プレゼント：{!! (e($present->present)) !!}</p>
-                            <p>あげた年：{!! (e($present->year)) !!}</p> 
-                            <p>いいねの数{{ $present->favorite->count()}}</p>
-                            <p>コメントの数{{ $present->comment->count()}}</p>
-                            @include('present_favorite.favorite_button')
-                        </div>
-                    </div>
-                </div>
+            @foreach ($gifts as $gift)
+                @include('users.present')
             @endforeach
         </div>
     </div>
-<div>{{ $presents->links() }}</div>
+<div>{{ $gifts->links() }}</div>
+</div>
 </div>
 @endsection

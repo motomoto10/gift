@@ -10,10 +10,15 @@
                             <div class="col-sm-8 ">
                                 <div>
                                     <h3>{{ $user->name }}</h3>
-                                    <p>{{ $user->gender}}　{{ $user->born}}</p>
+                                    @if ($user->gender)
+                                    <p>性別：{{ $user->gender}}</p>
+                                    @endif
+                                    @if ($user->born)
+                                    <p>誕生日{{ $user->born->format('Y年n月j日')}}</p>
+                                    @endif
                                     <p>自己紹介:{{ $user->myself}}</p>
                                     <p>これまでにプレゼントした数{{ $user->gifts->count() }}</p>
-                                    <p>獲得したいいね数</p>
+                                    <p>獲得したいいね数{{ $user->favorites->count()}}</p>
                                     {!! link_to_route('users.show', '詳しく見る', ['user' => $user->id],['class' => 'btn-flat-dashed-border']) !!}
                                 </div>
                             </div>

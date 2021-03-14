@@ -7,10 +7,11 @@
                 <h1>さあ！<br>
                 プレゼントを送りましょう</h1>
                 <img class="w-25" src="{{ asset('img/present.png') }}">
-            <h2 class="">贈ったプレゼントを登録しましょう</h2>
                 <!--プレゼントもらう人の登録フォームへ-->
-                <div class="col-sm my-2">{!! link_to_route('gifts.create', 'プレゼントを登録する', [], ['class' => 'btn-square-pop btn-hover']) !!}</div>
-                <div class="col-sm my-2">{!! link_to_route('gifts.index', 'プレゼントを確認する', [], ['class' => 'btn-square-pop btn-hover']) !!}</div>
+                <div class="col-sm my-3">{!! link_to_route('gifts.create', 'プレゼントを登録する', [], ['class' => 'btn-square-pink btn-hover']) !!}</div>
+                <div class="col-sm my-3">{!! link_to_route('users.show', '自分が登録したプレゼント', ['user' => Auth::id()], ['class' => 'btn-square-pop btn-hover']) !!}</div>
+                <div class="col-sm my-3">{!! link_to_route('gifts.index', 'みんなが贈ったプレゼント', [], ['class' => 'btn-square-green btn-hover']) !!}</div>
+                <div class="col-sm my-3">{!! link_to_route('users.favorite_present', 'いいねしたプレゼント', ['id' => Auth::id()], ['class' => 'btn-square-purple btn-hover']) !!}</div>
             @else
             <div class="text-center">
                 <h1>ようこそ！<br>
@@ -35,7 +36,7 @@
                         {{-- ログインページへのリンク --}}
                         <button class="btn btn-default col-sm">{!! link_to_route('login', 'ログインはこちらから！', [], ['class' => 'btn-square-green']) !!}</button>
                         <!--ゲストログイン機能のリンク-->
-                        <button class="btn btn-default col-sm">{!! link_to_route('login.guest', 'ゲストログインはこちらから！', [], ['class' => 'btn-square-pink']) !!}</button>
+                        <button class="btn btn-default col-sm">{!! link_to_route('login.guest', 'ゲストログインはこちらから！', [], ['class' => 'btn-square-pop']) !!}</button>
                     </div>
             @endif
         </div>

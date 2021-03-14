@@ -25,6 +25,9 @@
     Route::group(['middleware' => ['auth']], function () {
         Route::resource('users', 'UsersController');
         
+        Route::group(['prefix' => 'user/{id}'],function() {
+        Route::get('favorite_present','UsersController@favorite_present')->name('users.favorite_present');
+        });
         Route::resource('gifts','GiftsController');
         
         Route::group(['prefix' => 'gifts/{id}'],function() {

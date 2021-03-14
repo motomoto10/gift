@@ -38,7 +38,7 @@ class User extends Authenticatable
     ];
     
     static $genders = [
-        '男', '女','その他'
+        '男', '女','その他','nul'=>'不明'
     ];
     
     
@@ -47,15 +47,15 @@ class User extends Authenticatable
         return $this->hasMany(Gift::class);
     }
     
-        public function loadRelationshipCounts()
-    {
-        $this->loadCount('gifts');
-    }
-    
-    
+
     public function favorites()
     {
         return $this->belongsToMany(Gift::class,'favorite_gift', 'user_id','gift_id')->withTimestamps();
+    }
+    
+    public function loadRelationshipCounts()
+    {
+        $this->loadCount('gifts','favorites');
     }
     
     public function favorite($giftId)
@@ -89,4 +89,6 @@ class User extends Authenticatable
         // お気に入り中giftの中に $giftIdのものが存在するか
         return $this->favorites()->where('gift_id', $giftId)->exists();
     }
+    
+    protected $dates = ['born'];
 }

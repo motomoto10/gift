@@ -13,11 +13,17 @@
                     @if (Auth::id() == $user->id)
                         {!! link_to_route('users.edit', 'プロフィールを変更する', ['user' => $user->id],['class' => 'btn-flat-dashed-border']) !!}
                     @endif
-                    <p>{{ $user->gender}}/{{ $user->born}}</p>
+                    @if ($user->gender)
+                    <p>性別：{{ $user->gender}}</p>
+                    @endif
+                    @if ($user->born)
+                    <p>誕生日{{ $user->born->format('Y年n月j日')}}</p>
+                    @endif
+                    
                     <p>自己紹介:{{ $user->myself}}</p>
 
-                    <p>これまでに登録したプレゼント数</p>
-                    <p>獲得したいいね数</p>
+                    <p>これまでにプレゼントした数{{ $user->gifts->count() }}</p>
+                    <p>獲得したいいね数{{ $user->favorites->count()}}</p>
                 </div>
             </div>
         </div>

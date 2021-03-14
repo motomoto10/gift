@@ -3,9 +3,11 @@
 @section('content')
     <div class="row">
         @include('users.card')
-        @foreach($gifts as $gift)
-        @include('users.present')
-        @endforeach
+            <div class="row justify-content-center">
+            @foreach($gifts as $gift)
+                @include('users.present')
+            @endforeach
+            </div>
         </div>
     </div>
 @endsection

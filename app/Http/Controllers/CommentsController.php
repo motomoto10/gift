@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Comment;
 
 class CommentsController extends Controller
 {
@@ -21,7 +22,7 @@ class CommentsController extends Controller
         $comment->gift_id =$id;
         $comment->save();
                 
-            return redirect('/');
+            return back();
     }
     
     public function destroy($id)

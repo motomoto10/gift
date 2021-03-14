@@ -229,6 +229,27 @@
   color: #FFF;
 }
 
+.btn-square-purple {
+  position: relative;
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  width:40%;
+  text-decoration: none;
+  color: #FFF;
+  background: #A16EFF;/*背景色*/
+  border-bottom: solid 2px #9057FF;/*少し濃い目の色に*/
+  border-radius: 4px;/*角の丸み*/
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+  font-weight: bold;
+}
+
+.btn-square-purple:hover {
+  border-bottom: solid 2px #A16EFF;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+  text-decoration: none;
+  color: #FFF;
+}
+
 .btn-square-green {
   position: relative;
   display: inline-block;
@@ -362,6 +383,27 @@
   text-decoration: none;
   color: #FFF;
 }
+
+.btn-full-white {
+  position: relative;
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  width:100%;
+  text-decoration: none;
+  color: #222;
+  background: #FFFFE0;/*背景色*/
+  border-bottom: solid 2px #FFFACD;/*少し濃い目の色に*/
+  border-radius: 4px;/*角の丸み*/
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+  font-weight: bold;
+}
+
+.btn-full-white:hover {
+  border-bottom: solid 2px #FFFFE0;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+  text-decoration: none;
+  color: #FFF;
+}
 .btn-full-red {
   position: relative;
   display: inline-block;
@@ -461,4 +503,53 @@
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
   text-decoration: none;
   color: #FFF;
+}
+
+/*吹き出し*/
+
+.balloon5 {
+  width: 100%;
+  margin: 1.5em 0;
+  overflow: hidden;
+}
+
+.balloon5 .faceicon {
+  float: left;
+  margin-right: -90px;
+  width: 80px;
+}
+
+.balloon5 .faceicon img{
+  width: 100%;
+  height: auto;
+  border: solid 3px #d7ebfe;
+  border-radius: 50%;
+}
+
+.balloon5 .chatting {
+  width: 100%;
+}
+
+.says {
+  display: inline-block;
+  position: relative; 
+  margin: 5px 0 0 105px;
+  padding: 17px 13px;
+  border-radius: 12px;
+  background: #d7ebfe;
+}
+
+.says:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 18px; 
+  left: -24px;
+  border: 12px solid transparent;
+  border-right: 12px solid #d7ebfe;
+}
+
+.says p {
+  margin: 0;
+  padding: 0;
 }
