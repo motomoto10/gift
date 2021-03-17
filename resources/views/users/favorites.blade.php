@@ -14,7 +14,7 @@
 
         <div class="row justify-content-center">
             @foreach ($gifts as $gift)
-                @include('users.present')
+                @include('commons.present')
             @endforeach
         </div>
     </div>

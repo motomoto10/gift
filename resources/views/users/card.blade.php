@@ -1,5 +1,5 @@
-<div class="col-sm-10 mx-auto mb-3">
-    <div class="box25">
+<div class="col-sm-12 mx-auto mb-3">
+    <div class="box25 mx-auto box_card">
         <div class="row no-gutters">
             <div class="col-sm-3 col-img">
                 <img class="rounded img-fluid" src="/storage/profile_images/{{ $user->id }}.jpg"width="150px" height="150px" alt="">
@@ -8,8 +8,8 @@
                 @endif
             </div>
             <div class="col-sm-9">
-                <div>
-                    <h3>{{ $user->name }}</h3>
+                <div class="text-center text-sm-left">
+                    <p class="font-weight-bold">{{ $user->name }}<p>
                     @if (Auth::id() == $user->id)
                         {!! link_to_route('users.edit', 'プロフィールを変更する', ['user' => $user->id],['class' => 'btn-flat-dashed-border']) !!}
                     @endif

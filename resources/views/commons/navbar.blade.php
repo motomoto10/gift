@@ -1,4 +1,4 @@
-<header class="mb-4">
+<header class="mb-2">
     <nav class="navbar navbar-expand-sm top_navbar">
         {{-- トップページへのリンク --}}
         <a class="navbar-brand navbar-font" href="/">Present</a>

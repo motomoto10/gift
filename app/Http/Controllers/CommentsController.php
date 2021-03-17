@@ -13,8 +13,6 @@ class CommentsController extends Controller
             'comment' => 'required|max:255',
         ]);
         
-        // ここに不具合あり
-        
         $comment = new Comment;
         $comment->comment = $request->comment;
         $comment->name = \Auth::user()->name;
@@ -25,8 +23,13 @@ class CommentsController extends Controller
             return back();
     }
     
-    public function destroy($id)
+        public function destroy($comment)
     {
-        return back();
+        $comment = Comment::findOrFail($comment);
+        
+        if(\Auth::id() === $comment->user_id) {
+            $comment->delete();
+        }
+            return back();
     }
 }

@@ -19,8 +19,8 @@
             </div>    
                 <img class="w-25" src="{{ asset('img/present.png') }}">
                 <h2 class="mb-4">あなたの大切な人へプレゼントを送りましょう</h2>
-                <div class="container my-3 row justify-content-center">
-                    <div class="box25 col-md-6">
+                <div class="container my-3 justify-content-center">
+                    <div class="box25 col-md-6 mx-auto">
                             <h2 class="mb-4">Presentとは？？</h2>
                             <p>
                                 恋人や家族の誕生日、結婚記念日など、<br>
