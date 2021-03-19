@@ -9,14 +9,18 @@ use App\Comment;
 
 class GiftsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $gifts = Gift::orderBy('id', 'desc')->paginate(20);
-        
-        // ユーザ一覧ビューでそれを表示
-        return view('gifts.index', [
-            'gifts' => $gifts,
-        ]);
+        $genders = Gift::$genders;
+        $relation = Gift::$relation;
+        $params = $request->query();
+
+        $gifts = Gift::serachKeyword($params['keyword'] ?? null)
+            ->genderFilter($params['gender'] ?? null)
+            ->relationFilter($params['relation'] ?? null)
+            ->get();
+  
+        return view('gifts.index',compact('gifts','params','genders','relation'));
 
     }
     

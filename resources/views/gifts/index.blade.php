@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+<div class="container">
     <div class="center">
         <div class="text-center">
                 <h1>さあ！<br>
@@ -12,10 +12,17 @@
         
         
             <h2 class="mb-3">他の人はこんなものを贈っています。</h2>
-
+            
+            @include('commons.search')
+            
+        </div>
+    </div>
         <div class="row justify-content-center">
+            
         @foreach($gifts as $gift)
             @include('commons.present')
         @endforeach
+        
         </div>
+</div>
 @endsection

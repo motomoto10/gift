@@ -48,4 +48,29 @@ class Gift extends Model
     {
         return $this->hasMany(Comment::class);
     }
+    
+    /**
+    * キーワード検索
+    */
+    public function scopeSerachKeyword($query, $keyword = null)
+    {
+        if ($keyword) {
+            $query
+                ->where('gift', 'like', '%' . $keyword . '%')
+                ->orWhere('explain', 'like', '%' . $keyword . '%')
+                ->orWhere('anniversary', 'like', '%' . $keyword . '%');
+        }
+        return $query;
+    }
+    
+    public function scopeGenderFilter($query, $genders = null)
+    {
+        if ($genders) return $query->where('gender', 'like', '%' . $genders . '%');
+    }
+    
+    public function scopeRelationFilter($query, $relation = null)
+    {
+        if ($relation) return $query->where('relation', 'like', '%' . $relation . '%');
+    }
+    
 }
