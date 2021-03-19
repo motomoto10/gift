@@ -14,10 +14,13 @@ class GiftsController extends Controller
         $genders = Gift::$genders;
         $relation = Gift::$relation;
         $params = $request->query();
+        
+        
 
         $gifts = Gift::serachKeyword($params['keyword'] ?? null)
             ->genderFilter($params['gender'] ?? null)
             ->relationFilter($params['relation'] ?? null)
+            ->anniversariesFilter($params['anniversaries'] ?? null)
             ->get();
   
         return view('gifts.index',compact('gifts','params','genders','relation'));

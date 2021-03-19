@@ -72,5 +72,13 @@ class Gift extends Model
     {
         if ($relation) return $query->where('relation', 'like', '%' . $relation . '%');
     }
+    public function scopeAnniversariesFilter($query, $anniversaries = null)
+    {
+        if (isset($params['anniversaries']) && is_array($params['anniversaries'])) {
+        $anniversaries = implode( $params["anniversaries"]);
     
+    
+        if ($anniversaries) return $query->where('anniversaries', 'like', '%' . $anniversaries . '%');
+    }
+    }
 }
