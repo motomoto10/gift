@@ -13,8 +13,10 @@
                     <span class="badge badge-pill badge-success">{!! ($gift->relation) !!}</span>
                     <span class="badge badge-pill badge-danger">{!! ($gift->anniversary) !!}</span>
                     <span class="badge badge-pill badge-warning">{!! ($gift->price) !!}</span>
-                    <span class="badge badge-pill badge-info">{!! ($gift->day) !!}</span>
-                </div>
+                    @if($gift->day)
+                        <span class="badge badge-pill badge-info">{!! ($gift->day->format('Y年n月j日')) !!}</span>
+                     @endif
+                     </div>
                 <div>
                     <p>ーこのプレゼントへの思いー</p>
                     <p>{!! ($gift->explain) !!}</p>
@@ -37,7 +39,9 @@
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-default col-sm">{!! link_to_route('gifts.show', '詳しく聞いてみる', ['gift' => $gift->id], ['class' => 'btn-full-pop btn-hover btn-m']) !!}</button>
+                <div class="row">
+                <button class="btn btn-default col-md">{!! link_to_route('gifts.show', '詳しく聞いてみる', ['gift' => $gift->id], ['class' => 'btn-full-pop btn-hover btn-m']) !!}</button>
+                </div>
                 @include('gift_favorite.favorite_button')
                 </div>
             </div>

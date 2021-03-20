@@ -28,6 +28,8 @@ class Gift extends Model
         '1000円以下','1000~3000円', '3000~5000円','5000~10000円','1万円~3万円','3万円~5万円','5万円~10万円','10万円以上','不明'
     ];
     
+    protected $dates = ['day'];
+    
     
         public function user()
     {

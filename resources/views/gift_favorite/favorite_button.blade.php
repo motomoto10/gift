@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-sm btn">
+    <div class="col-md btn">
     @if (Auth::user()->is_favorites($gift->id))
         {{-- 取り消しボタンのフォーム --}}
         {!! Form::open(['route' => ['gifts.unfavorite', $gift->id], 'method' => 'delete']) !!}

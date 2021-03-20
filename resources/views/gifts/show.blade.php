@@ -50,7 +50,9 @@
                         <span class="badge badge-pill badge-success">{!! ($gift->relation) !!}</span>
                         <span class="badge badge-pill badge-danger">{!! ($gift->anniversary) !!}</span>
                         <span class="badge badge-pill badge-warning">{!! ($gift->price) !!}</span>
-                        <span class="badge badge-pill badge-info">{!! ($gift->day) !!}</span>
+                        @if($gift->day)
+                        <span class="badge badge-pill badge-info">{!! ($gift->day->format('Y年n月j日')) !!}</span>
+                        @endif
                         </div>
                         <div>
                         <p>ーこのプレゼントへの思いー</p>

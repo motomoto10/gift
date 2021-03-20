@@ -86,8 +86,6 @@
                         <label for="explain" class="col-md-3 col-form-label">このプレゼントへの思い：</label>
                         {!! Form::textarea('explain', old('explain'), ['class' => 'form-control col-md-9', 'rows' => '3']) !!}
                         </div>
-
-                        
                     </div>
                         <div class="col-12">
                         {!! Form::submit('登録', ['class' => 'btn btn-square-red']) !!}
