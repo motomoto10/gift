@@ -16,8 +16,6 @@ class GiftsController extends Controller
         $anniversaries = Gift::$anniversaries;
         $params = $request->query();
         
-        
-
         $gifts = Gift::serachKeyword($params['keyword'] ?? null)
             ->genderFilter($params['gender'] ?? null)
             ->relationFilter($params['relation'] ?? null)
@@ -44,12 +42,12 @@ class GiftsController extends Controller
         $request->validate([
             'gift' => 'required|max:25',
             'explain' => 'max:255',
-            'gender' => 'max:255',
-            'relation' => 'max:255',
-            'old' => 'max:255',
-            'anniversary' => 'max:255',
-            'price' => 'max:255',
-            'day'=> 'max:255'
+            'gender' => 'max:25',
+            'relation' => 'max:25',
+            'old' => 'max:25',
+            'anniversary' => 'max:25',
+            'price' => 'max:25',
+            'day'=> 'max:25'
         ]);
         
         $request->user()->gifts()->create([
