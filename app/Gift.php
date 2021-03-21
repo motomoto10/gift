@@ -76,11 +76,11 @@ class Gift extends Model
     }
     public function scopeAnniversariesFilter($query, $anniversaries = null)
     {
-        if (isset($params['anniversaries']) && is_array($params['anniversaries'])) {
-        $anniversaries = implode( $params["anniversaries"]);
+        // if (isset($params['anniversaries']) && is_array($params['anniversaries'])) {
+        // $anniversaries = implode( $params["anniversaries"]);}
     
     
-        if ($anniversaries) return $query->where('anniversaries', 'like', '%' . $anniversaries . '%');
-    }
+        if ($anniversaries) return $query->where('anniversary', 'like', '%' . $anniversaries . '%');
+    
     }
 }

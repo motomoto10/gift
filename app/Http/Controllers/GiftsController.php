@@ -13,6 +13,7 @@ class GiftsController extends Controller
     {
         $genders = Gift::$genders;
         $relation = Gift::$relation;
+        $anniversaries = Gift::$anniversaries;
         $params = $request->query();
         
         
@@ -23,7 +24,7 @@ class GiftsController extends Controller
             ->anniversariesFilter($params['anniversaries'] ?? null)
             ->get();
   
-        return view('gifts.index',compact('gifts','params','genders','relation'));
+        return view('gifts.index',compact('gifts','params','genders','relation','anniversaries'));
 
     }
     
