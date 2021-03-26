@@ -27,6 +27,8 @@
     
 // 検索
     Route::get('keyword','GiftsController@searchGift')->name('gifts.search');
+    Route::get('indexsearch','GiftsController@indexsearch')->name('gifts.indexsearch');
+    Route::get('directsearch','GiftsController@searchGift')->name('gifts.directsearch');
     
     Route::group(['middleware' => ['auth']], function () {
         Route::resource('users', 'UsersController');

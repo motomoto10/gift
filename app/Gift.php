@@ -22,10 +22,14 @@ class Gift extends Model
     ];
     
     static $anniversaries = [
-        '誕生日', '結婚記念日','出産祝い','開店祝い','卒業祝い','入学祝い','クリスマス','バレンタイン','ホワイトデー','その他','不明'
+        '誕生日', '結婚祝い','出産祝い','開店祝い','卒業祝い','入学祝い','クリスマス','バレンタイン','ホワイトデー','その他','不明'
     ];
     static $prices = [
         '1000円以下','1000~3000円', '3000~5000円','5000~10000円','1万円~3万円','3万円~5万円','5万円~10万円','10万円以上','不明'
+    ];
+    
+    static $target = [
+    '男', '女','誕生日', '結婚祝い','恋人','父', '母','夫', '妻','10歳以下'
     ];
     
     protected $dates = ['day'];
@@ -54,7 +58,7 @@ class Gift extends Model
     /**
     * キーワード検索
     */
-    public function scopeSerachKeyword($query, $keyword = null)
+    public function scopeSearchKeyword($query, $keyword = null)
     {
         if ($keyword) {
             $query
@@ -79,6 +83,16 @@ class Gift extends Model
     public function scopePricesFilter($query, $prices = null)
     {
         if ($prices) return $query->where('relation', 'like', '%' . $prices . '%');
+    }
+    
+    public function scopeTargetFilter($query, $target = null)
+    {
+        if ($target) return $query
+                ->where('gift', 'like', '%' . $target . '%')
+                ->orWhere('explain', 'like', '%' . $target . '%')
+                ->orWhere('anniversary', 'like', '%' . $target . '%')
+                ->orWhere('gender', 'like', '%' . $target . '%')
+                ->orWhere('relation', 'like', '%' . $target . '%');
     }
     
     public function scopeAnniversariesFilter($query, $anniversaries = null)

@@ -9,7 +9,7 @@
             <h3>プレゼントに困った方に!<br>みんながあげたプレゼントを<br>あつめました。</h3>
             <p>あなたのあげたい相手にマッチしたプレゼントを発見しよう。</p>
             
-            {!! Form::open(['route' => 'gifts.index']) !!}
+            {!! Form::open(['route' => 'gifts.indexsearch','method' => 'get'])!!}
                     <div class="form-group">
                         <input type="text" name="keyword" class="form-control"{{ $params['keyword'] ?? null }} placeholder="探したいキーワードを入れてください" style="width: 100%" />
                         <i class="icon_search"></i>

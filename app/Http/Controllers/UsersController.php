@@ -13,7 +13,7 @@ class UsersController extends Controller
 {
     public function index()
     {
-        $target = Gift::$genders;
+        $target = Gift::$target;
         
         $gifts = Gift::orderBy('id', 'desc')->paginate(3);
         

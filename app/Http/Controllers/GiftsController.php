@@ -17,7 +17,7 @@ class GiftsController extends Controller
         $prices = Gift::$prices;
         $params = $request->query();
         
-        $gifts = Gift::serachKeyword($params['keyword'] ?? null)
+        $gifts = Gift::searchKeyword($params['keyword'] ?? null)
             ->genderFilter($params['gender'] ?? null)
             ->relationFilter($params['relation'] ?? null)
             ->anniversariesFilter($params['anniversaries'] ?? null)
@@ -27,6 +27,24 @@ class GiftsController extends Controller
         return view('gifts.index',compact('gifts','params','genders','relation','anniversaries','prices'));
 
     }
+    
+    public function indexsearch(Request $request)
+    {
+        $target = Gift::$target;
+        $genders = Gift::$genders;
+        $relation = Gift::$relation;
+        $anniversaries = Gift::$anniversaries;
+        $prices = Gift::$prices;
+        $params = $request->query();
+        
+        $gifts = Gift::searchKeyword($params['keyword'] ?? null)
+            ->targetFilter($params['target'] ?? null)
+            ->get();
+            
+        return view('gifts.index',compact('gifts','params','genders','relation','anniversaries','prices','target'));
+
+    }
+    
     
     public function indexsort(Request $request)
     {
