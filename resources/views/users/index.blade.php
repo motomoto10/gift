@@ -9,26 +9,28 @@
             <h3>プレゼントに困った方に!<br>みんながあげたプレゼントを<br>あつめました。</h3>
             <p>あなたのあげたい相手にマッチしたプレゼントを発見しよう。</p>
             
-            
-            <form action="/reviews" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
-              <div class="custom-search-input-2">
-                <div class="form-group">
-                  <input type="text" name="skill_title" id="skill_title" class="form-control" placeholder="何を学びたいですか？" style="width: 100%" />
-                  <i class="icon_search"></i>
-                </div>
-                <!-- please fetch categories from database except 全てのカテゴリー -->
-                <select name="category_ids" id="category_ids" class="wide"><option value="">学び方</option><option value="1">オンラインスクール</option>
-<option value="2">通学・通い</option>
-<option value="3">国内Webサービス</option>
-<option value="4">海外Webサービス</option>
-<option value="5">教材の質がいい</option>
-<option value="6">メンターに自信あり</option>
-<option value="7">留学</option>
-<option value="8">求職支援プログラム</option></select>
-
-                <input type="submit" name="commit" value="検索する" data-disable-with="検索する" />
-              </div>
-            </form>
+            {!! Form::open(['route' => 'gifts.index']) !!}
+                    <div class="form-group">
+                        <input type="text" name="keyword" class="form-control"{{ $params['keyword'] ?? null }} placeholder="探したいキーワードを入れてください" style="width: 100%" />
+                        <i class="icon_search"></i>
+                        <div class="row my-3">
+                        {!! Form::label('target', 'どんな相手:', ['class' => 'col-md-3 my-auto']) !!}
+                        <div class="col-md-9">
+                            <select class="form-control" name="target">
+                            <option selected="selected" value="">選択してください</option>
+                            @foreach($target as $key => $value)
+                                <option value="{{ $value }}"}>
+                                {{ $value }}
+                                </option>
+                            @endforeach
+                            </select>
+                        </div>
+                        </div>
+                    </div>
+                        <div class="row justify-content-center">
+                          <input type="submit" class="col-6" value="検索する" data-disable-with="検索する" />
+                        </div>
+            {!! Form::close() !!}
         </div>
         
         

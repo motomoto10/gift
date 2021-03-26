@@ -13,14 +13,17 @@ class UsersController extends Controller
 {
     public function index()
     {
+        $target = Gift::$genders;
+        
         $gifts = Gift::orderBy('id', 'desc')->paginate(3);
         
-        $likes = Gift::orderBy('id', 'desc')->paginate(3);
+        $likes = Gift::withCount('favorite')->orderBy('favorite_count', 'desc')->paginate(3);
         
         // ユーザ一覧ビューでそれを表示
         return view('users.index', [
             'gifts' => $gifts,
-            'likes' => $likes
+            'likes' => $likes,
+            'target'=> $target
         ]);
 
     }
@@ -32,9 +35,9 @@ class UsersController extends Controller
         
         $user->loadRelationshipCounts();
         
-        $gifts = Gift::where('user_id',$id)->get();
+        $gifts = Gift::where('user_id',$id)->orderBy('id', 'desc')->get();
         
-        $likes = $user->favorites()->paginate(10);
+        $likes = $user->favorites()->orderBy('created_at', 'desc')->paginate(10);
         
         // ユーザ詳細ビューでそれを表示
         return view('users.show', [
