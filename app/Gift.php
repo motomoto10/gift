@@ -60,7 +60,8 @@ class Gift extends Model
             $query
                 ->where('gift', 'like', '%' . $keyword . '%')
                 ->orWhere('explain', 'like', '%' . $keyword . '%')
-                ->orWhere('anniversary', 'like', '%' . $keyword . '%');
+                ->orWhere('anniversary', 'like', '%' . $keyword . '%')
+                ->orWhere('relation', 'like', '%' . $keyword . '%');
         }
         return $query;
     }
@@ -74,12 +75,17 @@ class Gift extends Model
     {
         if ($relation) return $query->where('relation', 'like', '%' . $relation . '%');
     }
+    
+    public function scopePricesFilter($query, $prices = null)
+    {
+        if ($prices) return $query->where('relation', 'like', '%' . $prices . '%');
+    }
+    
     public function scopeAnniversariesFilter($query, $anniversaries = null)
     {
         // if (isset($params['anniversaries']) && is_array($params['anniversaries'])) {
         // $anniversaries = implode( $params["anniversaries"]);}
-    
-    
+        
         if ($anniversaries) return $query->where('anniversary', 'like', '%' . $anniversaries . '%');
     
     }

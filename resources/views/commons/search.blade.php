@@ -36,6 +36,17 @@
         @endforeach
       </select>
     </div>
+    <div class="row my-2">
+      <label for="prices" class="col-12 col-form-label">予算で検索</label>
+      <select class="form-control col-12" name="prices">
+        <option selected="selected" value="">選択してください</option>
+        @foreach($prices as $key => $value)
+          <option value="{{ $value }}"}>
+            {{ $value }}
+          </option>
+        @endforeach
+      </select>
+    </div>
     <div class="row justify-content-center">
     <button type="submit" class="text-center col-lg-12 col-6">検索する</button>
     </div>

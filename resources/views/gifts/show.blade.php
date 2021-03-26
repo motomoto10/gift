@@ -1,86 +1,54 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="center">
-        <div class="text-center">
-            @if (Auth::check())
-                <p>{{ $gift->user->name }}に聞いてみよう</p>
-                <img class="w-25" src="{{ asset('img/present.png') }}">
-            
-            @else
-            @endif
-        </div> 
-    </div>
-<div class="row">
-    <div class="col-lg-6">
-    <div class="row justify-content-center">
-                <div class="col-lg-12 mb-3">
-                    <div class="box25">
-                        <div class="row no-gutters">
-                            <div class="col-sm-4 col-img">
-                                <img class="rounded img-fluid" src="/storage/profile_images/{{ $gift->user->id }}.jpg"width="100px" height="100px" alt="">
-                            </div>
-                            <div class="col-sm-8 ">
-                                <div>
-                                    <p class="font-weight-bold">{{ $gift->user->name }}</p>
-                                    @if ($gift->user->gender)
-                                    <p>性別：{{ $gift->user->gender}}</p>
-                                    @endif
-                                    @if ($gift->user->born)
-                                    <p>誕生日{{ $gift->user->born->format('Y年n月j日')}}</p>
-                                    @endif
-                                    <p>自己紹介:{{ $gift->user->myself}}</p>
-                                    <p>これまでにプレゼントした数{{ $gift->user->gifts->count() }}</p>
-                                    <p>獲得したいいね数{{ $gift->user->favorites->count()}}</p>
-                                    {!! link_to_route('users.show', 'ユーザーページ', ['user' => $gift->user->id],['class' => 'btn-square-purple text-center  btn-m']) !!}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            <div class="col-lg-12 mb-3">
-            <div class="box-yellow_user">
-                <div class="text-black text-center">
-                    <div>
-                        <div class="font-weight-bold">{!! ($gift->gift) !!}</div>
-                        <div class="my-3">
-                        <span class="badge badge-pill badge-primary">{{ $gift->favorite->count()}}いいね</span>
-                        <span class="badge badge-pill badge-secondary">{!! ($gift->old) !!}</span>
-                        <span class="badge badge-pill badge-light">{!! ($gift->gender) !!}</span>
-                        <span class="badge badge-pill badge-success">{!! ($gift->relation) !!}</span>
-                        <span class="badge badge-pill badge-danger">{!! ($gift->anniversary) !!}</span>
-                        <span class="badge badge-pill badge-warning">{!! ($gift->price) !!}</span>
-                        @if($gift->day)
-                        <span class="badge badge-pill badge-info">{!! ($gift->day->format('Y年n月j日')) !!}</span>
-                        @endif
-                        </div>
-                        <div>
-                        <p>ーこのプレゼントへの思いー</p>
-                        <p>{!! ($gift->explain) !!}</p>
-                        </div>
-                        @include('gift_favorite.favorite_button')
-                        @if (Auth::id() == $gift->user_id)
-                        <div class="btn col-sm">{!! link_to_route('gifts.edit', '修正する', ['gift' => $gift->id], ['class' => 'btn-full-pop btn-m']) !!}</div>
-                                <div class="btn col-sm">
-                                {!! Form::open(['route' => ['gifts.destroy','gift' => $gift->id], 'method' => 'delete']) !!}
-                                    {!! Form::submit('削除する', ['class' => 'btn col-sm btn-full-red btn-m']) !!}
-                                {!! Form::close() !!}
-                                </div>
-                        @endif
-                        </div>
-                    </div>
-                </div>
+
+<div class="container mb-3">
+        <div class="row justify-content-center">
+        <div class="col-sm row justify-content-center justify-content-sm-end">
+                <img class="rounded img-fluid" src="/storage/profile_images/{{ $gift->user->id }}.jpg"width="200px" height="200px" alt="">
+        </div>
+        <div class="col-sm row justify-content-center justify-content-sm-start">
+            <div>
+            <div class="user_other font-weight-bold mt-3">{{ $gift->user->name }}</div>
+            <div class="overflow-auto mt-1" style="max-height: 200px;">
+                @if ($gift->user->gender)
+                    <p>性別：{{ $gift->user->gender}}</p>
+                    @endif
+                    @if ($gift->user->born)
+                    <p>誕生日{{ $gift->user->born->format('Y年n月j日')}}</p>
+                    @endif
+                    
+                    <p>自己紹介:{{ $gift->user->myself}}</p>
+
+                    <p>これまでにプレゼントした数{{ $gift->user->gifts->count() }}</p>
+                    <p>獲得したいいね数{{ $gift->user->favorites->count()}}</p>
+            </div>
             </div>
         </div>
+        </div>
+</div>
+ @if (Auth::id() == $gift->user->id)
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-xl-5 col-lg-6 text-center box_cat_home">
+          <h2>プレゼントを変更しますか？</h2>
+        <div class="btn col-sm">{!! link_to_route('gifts.edit', '修正する', ['gift' => $gift->id], ['class' => 'btn-full-pop btn-m']) !!}</div>
+        <div class="btn col-sm">
+        {!! Form::open(['route' => ['gifts.destroy','gift' => $gift->id], 'method' => 'delete']) !!}
+            {!! Form::submit('削除する', ['class' => 'btn col-sm btn-full-red btn-m']) !!}
+        {!! Form::close() !!}
+        </div>
+        </div>
+      </div>
     </div>
-
-    <div class="col-lg-6">
-        <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-12">
-                <div class="box-green row">
+@endif
+<div class="container">
+    <div class="row justify-content-center">
+        @include('commons.gift')
+        <div class="col-12 box_comment_home">
+            <div class="row">
                     @foreach($comments as $comment)
-                    <div>
+                    <div class="col-12">
                         <div class="balloon5 my-1">
                         <p>{{$comment->created_at}} 投稿者：{{$comment->name}}</p>
                                 <!--<p>{!! Form::open(['route' => ['comments.destroy','comment' => $comment->id,'id' => $gift->id], 'method' => 'delete']) !!}-->
@@ -112,9 +80,8 @@
                     </div>
                 </div>
             </div>
-            </div>
-            </div>
         </div>
     </div>
+</div>
 </div>
 @endsection

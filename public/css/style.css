@@ -181,7 +181,7 @@ h4, .h4 {
     font-size: 1rem;
 }
 
-/*gift.show*/
+/*gift.index*/
 
 #filters_col {
     background-color: #fff;
@@ -214,6 +214,70 @@ a#filters_col_bt:before {
 a#filters_col_bt.collapsed:before {
     content: "+";
 }
+
+/*gift.show*/
+.box_comment_home {
+    min-height: 214px;
+    background-color: #fff;
+    display: block;
+    padding: 35px 15px 25px 15px;
+    border-radius: 3px;
+    margin-bottom: 25px;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 2px 4px rgb(3 27 78 / 6%);
+    color: #000;
+}
+
+/*吹き出し*/
+
+.balloon5 {
+  width: 100%;
+  overflow: hidden;
+}
+
+.balloon5 .faceicon {
+  float: left;
+  margin-right: -90px;
+  width: 80px;
+}
+
+.balloon5 .faceicon img{
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+}
+
+.balloon5 .chatting {
+  width: 100%;
+}
+
+.says {
+  display: inline-block;
+  position: relative; 
+  margin: 5px 0 0 105px;
+  padding: 17px 13px;
+  border-radius: 12px;
+  background: #d7ebfe;
+  min-width:200px;
+  maX-width:600px;
+}
+
+.says:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 18px; 
+  left: -24px;
+  border: 12px solid transparent;
+  border-right: 12px solid #d7ebfe;
+}
+
+.says p {
+  margin: 0;
+  padding: 0;
+}
+
 
 /*present_remainderの箱*/
 .box25{
@@ -768,54 +832,6 @@ a#filters_col_bt.collapsed:before {
   width: 180px;
 }
 
-/*吹き出し*/
-
-.balloon5 {
-  width: 100%;
-  overflow: hidden;
-}
-
-.balloon5 .faceicon {
-  float: left;
-  margin-right: -90px;
-  width: 80px;
-}
-
-.balloon5 .faceicon img{
-  width: 100%;
-  height: auto;
-  border-radius: 50%;
-}
-
-.balloon5 .chatting {
-  width: 100%;
-}
-
-.says {
-  display: inline-block;
-  position: relative; 
-  margin: 5px 0 0 105px;
-  padding: 17px 13px;
-  border-radius: 12px;
-  background: #d7ebfe;
-  min-width:200px;
-  maX-width:300px;
-}
-
-.says:after {
-  content: "";
-  display: inline-block;
-  position: absolute;
-  top: 18px; 
-  left: -24px;
-  border: 12px solid transparent;
-  border-right: 12px solid #d7ebfe;
-}
-
-.says p {
-  margin: 0;
-  padding: 0;
-}
 
 .foot-nav {
     display:flex;

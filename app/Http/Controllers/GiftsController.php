@@ -14,17 +14,34 @@ class GiftsController extends Controller
         $genders = Gift::$genders;
         $relation = Gift::$relation;
         $anniversaries = Gift::$anniversaries;
+        $prices = Gift::$prices;
         $params = $request->query();
         
         $gifts = Gift::serachKeyword($params['keyword'] ?? null)
             ->genderFilter($params['gender'] ?? null)
             ->relationFilter($params['relation'] ?? null)
             ->anniversariesFilter($params['anniversaries'] ?? null)
+            ->pricesFilter($params['prices'] ?? null)
             ->get();
-  
-        return view('gifts.index',compact('gifts','params','genders','relation','anniversaries'));
+            
+        return view('gifts.index',compact('gifts','params','genders','relation','anniversaries','prices'));
 
     }
+    
+    public function indexsort(Request $request)
+    {
+        $genders = Gift::$genders;
+        $relation = Gift::$relation;
+        $anniversaries = Gift::$anniversaries;
+        $prices = Gift::$prices;
+        
+        
+            
+        return view('gifts.index',compact('gifts','params','genders','relation','anniversaries','prices'));
+
+    }
+    
+    
     
     public function create()
     {
@@ -39,6 +56,8 @@ class GiftsController extends Controller
     
     public function store(Request $request)
     {
+        
+        dd($request);
         $request->validate([
             'gift' => 'required|max:25',
             'explain' => 'max:255',

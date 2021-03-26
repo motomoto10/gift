@@ -1,10 +1,11 @@
 <div class="container mb-3">
-    <div class="row">
-        <div class="justify-content-lg-end d-none d-lg-flex col-lg-5">
+    <div class="row justify-content-center">
+        <div class="col-sm row justify-content-center justify-content-sm-end">
                 <img class="rounded img-fluid" src="/storage/profile_images/{{ $user->id }}.jpg"width="200px" height="200px" alt="">
-            
         </div>
-        <div>
+        <div class="col-sm row justify-content-center justify-content-sm-start">
+            <div>
+            
             <div class="user_other font-weight-bold mt-3">{{ $user->name }}</div>
             <div class="overflow-auto mt-1" style="max-height: 200px;">
                 @if ($user->gender)
@@ -24,6 +25,7 @@
             {!! link_to_route('users.edit', 'プロフィールを変更する', ['user' => $user->id],['class' => 'btn-flat-dashed-border']) !!}
         </div>
         @endif
+            </div>
         </div>
         </div>
 </div>

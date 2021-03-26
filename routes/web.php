@@ -25,6 +25,9 @@
 // ゲストログイン
     Route::get('guest','Auth\LoginController@guestLogin')->name('login.guest');
     
+// 検索
+    Route::get('keyword','GiftsController@searchGift')->name('gifts.search');
+    
     Route::group(['middleware' => ['auth']], function () {
         Route::resource('users', 'UsersController');
         
