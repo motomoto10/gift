@@ -35,7 +35,7 @@
                         @endif
                         <div class="text-center">
                         <i class="far fa-heart fa-lg pr-2" style="color: #BBBBBB;"></i>
-                        <span class="align-self-end  mx-2">{{ $like->favorite->count()}}</span>
+                        <span class="align-self-end  mx-2">いいね　{{ $like->favorite->count()}}</span>
                         </div>
                     </div>
                     <div class="col-md-6 align-items-center">
@@ -43,7 +43,7 @@
                         <div class="text-center">
                         <i class="far fa-comments fa-lg pr-2" style="color: #BBBBBB;"></i>
                         <span class="align-self-end mx-2">
-                            {{ $like->comments->count()}}
+                            コメント　{{ $like->comments->count()}}
                         </span>
                         </div>
                     </div>
