@@ -1,4 +1,4 @@
-<div class="col-md-4 col-sm-6 my-2 ">
+<div class="col-sm-6 my-2 ">
     <div class="box-yellow">
         <div class="text-black text-center">
             <div>

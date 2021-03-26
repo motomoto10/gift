@@ -1,19 +1,13 @@
-<div class="col-sm-12 mx-auto mb-3">
-    <div class="box25 mx-auto box_card">
-        <div class="row no-gutters">
-            <div class="col-sm-3 col-img">
-                <img class="rounded img-fluid" src="/storage/profile_images/{{ $user->id }}.jpg"width="150px" height="150px" alt="">
-                @if (Auth::id() == $user->id)
-                <button class="btn btn-default col-sm">{!! link_to_route('profile.index', '画像を変更する', [],['class' => 'btn-flat-dashed-border']) !!}</button>
-                @endif
-            </div>
-            <div class="col-sm-9">
-                <div class="text-center text-sm-left">
-                    <p class="font-weight-bold">{{ $user->name }}<p>
-                    @if (Auth::id() == $user->id)
-                        {!! link_to_route('users.edit', 'プロフィールを変更する', ['user' => $user->id],['class' => 'btn-flat-dashed-border']) !!}
-                    @endif
-                    @if ($user->gender)
+<div class="container mb-3">
+    <div class="row">
+        <div class="justify-content-lg-end d-none d-lg-flex col-lg-5">
+                <img class="rounded img-fluid" src="/storage/profile_images/{{ $user->id }}.jpg"width="200px" height="200px" alt="">
+            
+        </div>
+        <div>
+            <div class="user_other font-weight-bold mt-3">{{ $user->name }}</div>
+            <div class="overflow-auto mt-1" style="max-height: 200px;">
+                @if ($user->gender)
                     <p>性別：{{ $user->gender}}</p>
                     @endif
                     @if ($user->born)
@@ -24,8 +18,12 @@
 
                     <p>これまでにプレゼントした数{{ $user->gifts->count() }}</p>
                     <p>獲得したいいね数{{ $user->favorites->count()}}</p>
-                </div>
             </div>
+        @if (Auth::id() == $user->id)
+        <div class="col">
+            {!! link_to_route('users.edit', 'プロフィールを変更する', ['user' => $user->id],['class' => 'btn-flat-dashed-border']) !!}
         </div>
-    </div>
+        @endif
+        </div>
+        </div>
 </div>

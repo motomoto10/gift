@@ -30,12 +30,189 @@
 }
 
 .body {
-    background-color: #AFEEEE;
+    background-color: #EEEEEE;
 }
 
 .navbar-font {
     color:#FF69A3;
     font-weight:bold;
+}
+
+/*welcome*/
+
+.hero_single.version_2 {
+    height: 640px;
+    background: #AFEEEE center repeat fixed;
+    width: 100%;
+    text-align: center;
+    color: #000;
+}
+
+.hero_single .wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    color: #000;
+    margin: 0;
+}
+
+.hero_single.version_2 .wrapper p {
+    font-weight: 400;
+    margin: 5px 0 20px 0;
+    padding: 0;
+    font-size: 19px;
+    font-size: 1.1875rem;
+    text-shadow: none;
+}
+.hero_single.version_2 .wrapper h3 {
+    font-size: 2.0rem;
+    text-shadow: none;
+}
+
+.hero_single.version_2 .wrapper {
+    background: #AFEEEE;
+    background: linear-gradient(to bottom, #AFEEE, transparent);
+    text-align: left;
+}
+
+.hero_single .wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+
+/*main_title_3*/
+.main_title_3 {
+    position: relative;
+}
+h4, .h4 {
+    font-size: 1.5rem;
+}
+.main_title_3 p {
+    font-size: 18px;
+    font-size: 1.125rem;
+    font-weight: 300;
+    line-height: 1.4;
+    margin-bottom: 20px;
+}
+
+.category .main_title_3 a {
+    display: inline-block;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+}
+
+.category .main_title_3 a:after {
+    font-family: 'ElegantIcons';
+    content: "→";
+    font-size: 21px;
+    font-size: 1.3125rem;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    top: 2px;
+    margin-left: 4px;
+}
+@media (max-width: 767px){
+
+.main_title_3 a:after {
+    top: -2px;
+}
+
+
+  
+}
+
+.margin_30 {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.box_cat_home {
+    min-height: 214px;
+    background-color: #fff;
+    display: block;
+    padding: 35px 15px 25px 15px;
+    border-radius: 3px;
+    text-align: center;
+    margin-bottom: 25px;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 2px 4px rgb(3 27 78 / 6%);
+    color: #000;
+}
+
+.box_cat_home h3 {
+    font-size: 18px;
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: #000;
+    padding: 4px 0;
+    margin: 5px 0 15px 0;
+    border-radius: 25px;
+}
+
+/*call_section*/
+.call_section {
+    background: #AFEEEE center repeat fixed;
+    width: 100%;
+    text-align: center;
+    margin: 30px 0;
+}
+.margin_80_55 {
+    padding-top: 80px;
+    padding-bottom: 55px;
+}
+
+.call_section h3 {
+    font-weight: 300;
+    font-size:1.75rem;
+}
+.call_section p {
+    font-size: 16px;
+    font-size: 1rem;
+}
+
+/*gift.show*/
+
+#filters_col {
+    background-color: #fff;
+    padding: 20px 20px 15px 20px;
+    margin-bottom: 25px;
+    border: 1px solid #ededed;
+}
+
+a#filters_col_bt {
+    display: block;
+    color: #222;
+    position: relative;
+    font-size: 16px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+a#filters_col_bt:before {
+    font-family: "ElegantIcons";
+    content: "-";
+    font-size: 26px;
+    font-size: 1.625rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+    line-height: 1;
+    font-weight: normal;
+}
+
+a#filters_col_bt.collapsed:before {
+    content: "+";
 }
 
 /*present_remainderの箱*/
@@ -314,8 +491,7 @@
 .btn-square-pink {
   position: relative;
   display: inline-block;
-  padding: 0.25em 0.5em;
-  width:40%;
+  padding: 0.25em 1.5em;
   text-decoration: none;
   color: #FFF;
   background: #FFC0CB;/*背景色*/
@@ -639,4 +815,16 @@
 .says p {
   margin: 0;
   padding: 0;
+}
+
+.foot-nav {
+    display:flex;
+    justify-content: center;
+}
+
+.foot-nav ul li{
+    float: left;
+    padding:0px 20px; 
+    /*border-right: 1px solid #000;*/
+    list-style: none;
 }

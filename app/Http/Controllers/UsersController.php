@@ -13,11 +13,14 @@ class UsersController extends Controller
 {
     public function index()
     {
-        $user = User::orderBy('id', 'desc')->paginate(20);
+        $gifts = Gift::orderBy('id', 'desc')->paginate(3);
+        
+        $likes = Gift::orderBy('id', 'desc')->paginate(3);
         
         // ユーザ一覧ビューでそれを表示
         return view('users.index', [
-            'users' => $user,
+            'gifts' => $gifts,
+            'likes' => $likes
         ]);
 
     }
@@ -31,10 +34,13 @@ class UsersController extends Controller
         
         $gifts = Gift::where('user_id',$id)->get();
         
+        $likes = $user->favorites()->paginate(10);
+        
         // ユーザ詳細ビューでそれを表示
         return view('users.show', [
             'user' => $user,
-            'gifts' => $gifts,
+            'gifts'=> $gifts,
+            'likes' => $likes,
 
         ]);
     }

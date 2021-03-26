@@ -1,5 +1,9 @@
-<footer class="footer mt-auto py-3">
-    <div class="container">
-        <span class="text-muted">©︎2021PRESENT</span>
-    </div>
+<footer class="footer mt-auto py-3 ">
+    <div class="foot-nav">
+                <ul class="text-muted">
+                    <!--<li>ご利用規約</li>-->
+                    <!--<li>プライバシーポリシー</li>-->
+                    <li>©︎2021PRESENT</li>
+                </ul>
+            </div>
 </footer>

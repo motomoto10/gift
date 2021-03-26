@@ -12,7 +12,7 @@
             <ul class="navbar-nav">
                 @if (Auth::check())
                     {{-- ユーザ一覧ページへのリンク --}}
-                    <li class="nav-item">{!! link_to_route('users.index', 'User一覧', [], ['class' => 'nav-link navbar-font']) !!}</li>
+                    <li class="nav-item">{!! link_to_route('users.index', 'トップページ', [], ['class' => 'nav-link navbar-font']) !!}</li>
                     {{-- ユーザ詳細ページへのリンク --}}
                     <li class="nav-item">{!! link_to_route('users.show', 'Mypage', ['user' => Auth::id()],['class' => 'nav-link navbar-font']) !!}</li>
                     {{-- ログアウトへのリンク --}}
@@ -22,6 +22,8 @@
                     <li class="nav-item">{!! link_to_route('signup.get', '新規登録', [], ['class' => 'nav-link navbar-font']) !!}</li>
                     {{-- ログインページへのリンク --}}
                     <li class="nav-item">{!! link_to_route('login', 'ログイン', [], ['class' => 'nav-link navbar-font']) !!}</li>
+                    <li class="nav-item">{!! link_to_route('login.guest', 'ゲストログイン', [], ['class' => 'nav-link navbar-font']) !!}</li>
+
                 @endif
             </ul>
         </div>

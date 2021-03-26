@@ -48,6 +48,5 @@
     });
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+        Route::get('/','UsersController@index')->name('users.index');
+
