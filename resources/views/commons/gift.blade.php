@@ -39,7 +39,9 @@
                         </div>
                     </div>
                     <div class="col-md-6 align-items-center">
+                        @if (Auth::check())
                         <button class="btn btn-default col-lg">{!! link_to_route('gifts.show', '詳しく聞いてみる', ['gift' => $gift->id], ['class' => 'btn-full-pop btn-hover btn-m']) !!}</button>
+                        @endif
                         <div class="text-center">
                         <i class="far fa-comments fa-lg pr-2" style="color: #BBBBBB;"></i>
                         <span class="align-self-end mx-2">
