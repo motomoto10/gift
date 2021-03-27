@@ -4,9 +4,6 @@
     <div class="center">
         <div class="text-center">
             @if (Auth::check())
-                <h1>画像の変更</h1>
-                <img class="w-25" src="{{ asset('img/present.png') }}">
-                
                 @if ($is_image)
                 <figure>
                     <img src="/storage/profile_images/{{ Auth::id() }}.jpg" width="100px" height="100px">

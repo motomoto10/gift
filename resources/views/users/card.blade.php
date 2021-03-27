@@ -22,7 +22,7 @@
             </div>
         @if (Auth::id() == $user->id)
         <div class="col">
-            {!! link_to_route('users.edit', 'プロフィールを変更する', ['user' => $user->id],['class' => 'btn-flat-dashed-border']) !!}
+            {!! link_to_route('users.edit', 'プロフィールを変更する', ['user' => $user->id],['class' => '']) !!}
         </div>
         @endif
             </div>

@@ -75,7 +75,6 @@ class GiftsController extends Controller
     public function store(Request $request)
     {
         
-        dd($request);
         $request->validate([
             'gift' => 'required|max:25',
             'explain' => 'max:255',
@@ -143,7 +142,7 @@ class GiftsController extends Controller
             'explain' => $request->explain,
             ]);
             
-            return redirect('/');
+            return redirect()->route('gifts.show',[$gift]);
     }
     
     public function destroy($id)
