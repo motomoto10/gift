@@ -17,7 +17,7 @@
                     <p>{!! ($gift->day->format('Y年n月j日')) !!}</p>
                     @endif
                     <p>このプレゼントへの思い</p>
-                    <p>{!! ($gift->explain) !!}</p>
+                    <p>{!! nl2br($gift->explain) !!}</p>
                     </div>
                 </div>
                 <div class="card-footer">

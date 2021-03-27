@@ -17,7 +17,7 @@
                     <p>{!! ($like->day->format('Y年n月j日')) !!}</p>
                     @endif
                     <p>このプレゼントへの思い</p>
-                    <p>{!! ($like->explain) !!}</p>
+                    <p>{!! nl2br($like->explain) !!}</p>
                     </div>
                 </div>
                 <div class="card-footer">

@@ -15,7 +15,7 @@
                     <p>誕生日{{ $user->born->format('Y年n月j日')}}</p>
                     @endif
                     
-                    <p>自己紹介:{{ $user->myself}}</p>
+                    <p>自己紹介:{!! nl2br($user->myself) !!}</p>
 
                     <p>これまでにプレゼントした数{{ $user->gifts->count() }}</p>
                     <p>獲得したいいね数{{ $user->favorites->count()}}</p>

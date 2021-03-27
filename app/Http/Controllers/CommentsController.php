@@ -14,12 +14,12 @@ class CommentsController extends Controller
         ]);
         
         $comment = new Comment;
-        $comment->comment = $request->comment;
+        $comment->comment = Comment::mb_wordwrap($request->comment);
         $comment->name = \Auth::user()->name;
         $comment->user_id = \Auth::user()->id;
         $comment->gift_id =$id;
         $comment->save();
-                
+        
             return back();
     }
     

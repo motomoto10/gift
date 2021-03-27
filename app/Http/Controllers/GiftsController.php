@@ -23,7 +23,7 @@ class GiftsController extends Controller
             ->anniversariesFilter($params['anniversaries'] ?? null)
             ->pricesFilter($params['prices'] ?? null)
             ->get();
-            
+        
         return view('gifts.index',compact('gifts','params','genders','relation','anniversaries','prices'));
 
     }

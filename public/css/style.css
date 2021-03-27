@@ -88,6 +88,26 @@
     height: auto;
 }
 
+.subtitle {
+    font-size: 1.75rem;
+}
+
+.subtitle_text {
+    font-size: 18px;
+    line-height: 1.9;
+}
+.box_subtitle {
+    background-color: #fff;
+    display: block;
+    padding: 35px 15px 25px 15px;
+    border-radius: 3px;
+    text-align: center;
+    margin: 25px 0;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 2px 4px rgb(3 27 78 / 6%);
+    color: #000;
+}
 
 /*main_title_3*/
 .main_title_3 {
@@ -843,4 +863,10 @@ a#filters_col_bt.collapsed:before {
     padding:0px 20px; 
     /*border-right: 1px solid #000;*/
     list-style: none;
+}
+
+@media screen and ( max-width:450px) {
+  .sm_none{
+    display: none
+  }
 }

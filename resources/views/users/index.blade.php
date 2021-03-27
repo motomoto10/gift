@@ -6,25 +6,25 @@
       <div class="container">
         <div class="row justify-content-center pt-lg-5 text-left">
           <div class="col-xl-5 col-lg-6">
-            <h3>プレゼントに困った方に!<br>みんながあげたプレゼントを<br>あつめました。</h3>
-            <p>あなたのあげたい相手にマッチしたプレゼントを発見しよう。</p>
+            <h3>プレゼントに困った方に!<br>みんながあげたプレゼントを<br class="_none">あつめました。</h3>
+            <p>あなたのあげたい相手にマッチしたプレゼントを見つけることができます。</p>
             
-            {!! Form::open(['route' => 'gifts.indexsearch','method' => 'get'])!!}
+            {!! Form::open(['route' => 'gifts.index','method' => 'get'])!!}
                     <div class="form-group">
                         <input type="text" name="keyword" class="form-control"{{ $params['keyword'] ?? null }} placeholder="探したいキーワードを入れてください" style="width: 100%" />
                         <i class="icon_search"></i>
                         <div class="row my-3">
-                        {!! Form::label('target', 'どんな相手:', ['class' => 'col-md-3 my-auto']) !!}
-                        <div class="col-md-9">
-                            <select class="form-control" name="target">
-                            <option selected="selected" value="">選択してください</option>
-                            @foreach($target as $key => $value)
-                                <option value="{{ $value }}"}>
-                                {{ $value }}
-                                </option>
-                            @endforeach
-                            </select>
-                        </div>
+                        <!--{!! Form::label('target', 'どんな相手:', ['class' => 'col-md-3 my-auto']) !!}-->
+                        <!--<div class="col-md-9">-->
+                        <!--    <select class="form-control" name="target">-->
+                        <!--    <option selected="selected" value="">選択してください</option>-->
+                        <!--    @foreach($target as $key => $value)-->
+                        <!--        <option value="{{ $value }}"}>-->
+                        <!--        {{ $value }}-->
+                        <!--        </option>-->
+                        <!--    @endforeach-->
+                        <!--    </select>-->
+                        <!--</div>-->
                         </div>
                     </div>
                         <div class="row justify-content-center">
@@ -32,9 +32,6 @@
                         </div>
             {!! Form::close() !!}
         </div>
-        
-        
-        
           <div class="col-xl-5 col-lg-6 text-right d-none d-lg-block">
             <img class="img-fluid" width="300" height="300" src="{{ asset('img/present.png') }}" />
           </div>
@@ -42,6 +39,24 @@
       </div>
     </div>
   </section>
+  
+      <div class="container">
+        <div class="row justify-content-center text-center box_subtitle">
+          <div class="col-12">
+            <h2 class="mb-4 subtitle">Presentとは？？</h2>
+          </div>
+          <div class="col-12 subtitle_text">
+            <p>
+            ここでは他の人がどんなプレゼントを送っているかを見る事ができます。<br>
+            大切な人へプレゼントを贈るヒントにしてみてください。<br>
+            ここでのヒントであなた自身が最高のプレゼントを贈りましょう。<br>
+            贈った後はあなたが考えた最高のプレゼントを登録して他の人にも教えてあげてください！
+            </p>
+          </div>
+        </div>
+      </div>
+  
+  
   
   <div class="container margin_30 category">
     <div class="main_title_3">
@@ -52,7 +67,7 @@
 
     <div class="row justify-content-center">
         <div class="col-lg-3 col-6">
-          <a href="/review/online" class="box_cat_home" data-turbolinks="false">
+          <a href="{{ url('/users', 5) }}" class="box_cat_home" data-turbolinks="false">
             <img width="80" height="80" src="{{ asset('img/birthday.svg') }}" />
             <h3>誕生日</h3>
           </a>

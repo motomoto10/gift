@@ -60,7 +60,7 @@
                           </div>
                           <div class="chatting">
                             <div class="says">
-                                <p>{{$comment->comment}}</p>
+                                <p>{!! nl2br($comment->comment) !!}</p>
                             </div>
                           </div>
                         </div>
