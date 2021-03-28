@@ -28,7 +28,7 @@
                         </div>
                     </div>
                         <div class="row justify-content-center">
-                          <input type="submit" class="col-6" value="検索する" data-disable-with="検索する" />
+                          {!! Form::submit('検索する', ['class' => 'btn col-6 btn-square-purple']) !!}
                         </div>
             {!! Form::close() !!}
         </div>

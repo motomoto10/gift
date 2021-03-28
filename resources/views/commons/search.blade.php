@@ -48,7 +48,7 @@
       </select>
     </div>
     <div class="row justify-content-center">
-    <button type="submit" class="text-center col-lg-12 col-6">検索する</button>
+    {!! Form::submit('検索する', ['class' => 'btn text-center col-lg-12 col-6 btn-square-purple']) !!}
     </div>
 </form>
 </div>

@@ -4,15 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Comment;
+use App\Http\Requests\CommentRequest;
 
 class CommentsController extends Controller
 {
-    public function store(Request $request,$id)
+    public function store(CommentRequest $request,$id)
     {
-        $request->validate([
-            'comment' => 'required|max:255',
-        ]);
-        
+
         $comment = new Comment;
         $comment->comment = Comment::mb_wordwrap($request->comment);
         $comment->name = \Auth::user()->name;

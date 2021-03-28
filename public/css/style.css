@@ -533,19 +533,18 @@ a#filters_col_bt.collapsed:before {
 .btn-square-purple {
   position: relative;
   display: inline-block;
-  padding: 0.25em 0.5em;
-  width:40%;
+  padding: 0.25em 1.5em;
   text-decoration: none;
   color: #FFF;
-  background: #A16EFF;/*背景色*/
-  border-bottom: solid 2px #9057FF;/*少し濃い目の色に*/
+  background: #C299FF;/*背景色*/
+  border-bottom: solid 2px #B384FF;/*少し濃い目の色に*/
   border-radius: 4px;/*角の丸み*/
   box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
   font-weight: bold;
 }
 
 .btn-square-purple:hover {
-  border-bottom: solid 2px #A16EFF;
+  border-bottom: solid 2px #C299FF;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
   text-decoration: none;
   color: #FFF;
@@ -554,8 +553,7 @@ a#filters_col_bt.collapsed:before {
 .btn-square-green {
   position: relative;
   display: inline-block;
-  padding: 0.25em 0.5em;
-  width:40%;
+  padding: 0.25em 1.5em;
   text-decoration: none;
   color: #FFF;
   background: #90EE90;/*背景色*/
@@ -869,4 +867,18 @@ a#filters_col_bt.collapsed:before {
   .sm_none{
     display: none
   }
+}
+.card-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+}
+.card-text {
+  color: #777;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.ranking-title {
+  font-size: 24px;
 }

@@ -1,3 +1,8 @@
+<div class="col-12 ranking-title">
+{{ $loop->iteration}}位
+<span>{{ $like->favorite->count()}}いいね</span>
+</div>    
+    
     <div class="col-12">
             <div class="card shadow p-2 bg-white rounded mb-4">
                 <div class="card-header">
@@ -9,15 +14,17 @@
                     </a>
                 </div>
                 <div class="card-body">
-                    <p>贈ったもの</p>
-                    <p class="font-weight-bold">{!! ($like->gift) !!}</p>
-                    <div>
-                    @if($like->day)
-                    <p>贈った日</p>
-                    <p>{!! ($like->day->format('Y年n月j日')) !!}</p>
-                    @endif
-                    <p>このプレゼントへの思い</p>
-                    <p>{!! nl2br($like->explain) !!}</p>
+                      <div class="card-content">
+                        <p class="card-title font-weight-bold">{!! ($like->gift) !!}</p>
+                        
+                        @if($like->day)
+                        <p class="card-text"><i class="far fa-calendar-alt mr-2"></i>{!! ($like->day->format('Y年n月j日')) !!}</p>
+                        @endif
+                        @if($like->day)
+                        <p class="card-text">
+                        <i class="far fa-comment mr-2"></i>{!! nl2br($like->explain) !!}
+                        </p>
+                        @endif
                     </div>
                 </div>
                 <div class="card-footer">
@@ -31,7 +38,7 @@
                 <div class="row justify-content-centr">
                     <div class="col-md-6 align-items-center">
                         @if (Auth::check())
-                        @include('gift_favorite.favorite_button')
+                        @include('gift_favorite.favorite_button_like')
                         @endif
                         <div class="text-center">
                         <i class="far fa-heart fa-lg pr-2" style="color: #BBBBBB;"></i>
@@ -39,7 +46,9 @@
                         </div>
                     </div>
                     <div class="col-md-6 align-items-center">
+                        @if (Auth::check())
                         <button class="btn btn-default col-lg">{!! link_to_route('gifts.show', '詳しく聞いてみる', ['gift' => $like->id], ['class' => 'btn-full-pop btn-hover btn-m']) !!}</button>
+                        @endif
                         <div class="text-center">
                         <i class="far fa-comments fa-lg pr-2" style="color: #BBBBBB;"></i>
                         <span class="align-self-end mx-2">
@@ -53,4 +62,4 @@
                 </div>
                 </div>
             </div>
-</div>
+        </div>

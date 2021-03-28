@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Gift;
 use App\Comment;
+use App\Http\Requests\GiftRequest;
 
 
 class GiftsController extends Controller
@@ -72,20 +73,8 @@ class GiftsController extends Controller
         return view('gifts.create',compact('genders','relation','old','anniversaries','prices'));
     }
     
-    public function store(Request $request)
+    public function store(GiftRequest $request)
     {
-        
-        $request->validate([
-            'gift' => 'required|max:25',
-            'explain' => 'max:255',
-            'gender' => 'max:25',
-            'relation' => 'max:25',
-            'old' => 'max:25',
-            'anniversary' => 'max:25',
-            'price' => 'max:25',
-            'day'=> 'max:25'
-        ]);
-        
         $request->user()->gifts()->create([
             'gift' => $request->gift,
             'explain' => $request->explain,
@@ -127,19 +116,21 @@ class GiftsController extends Controller
         
     }
     
-    public function update(Request $request,$id)
+    public function update(GiftRequest $request,$id)
     {
         
         $gift =Gift::findOrFail($id);
         
-        $request->validate([
-            'gift' => 'required|max:25',
-            'explain' => 'required|max:25',
-        ]);
         
         $gift->update([
             'gift' => $request->gift,
             'explain' => $request->explain,
+            'gender' => $request->gender,
+            'relation' => $request->relation,
+            'old' => $request->old,
+            'anniversary' =>$request->anniversary,
+            'price' => $request->price,
+            'day' => $request->day,
             ]);
             
             return redirect()->route('gifts.show',[$gift]);

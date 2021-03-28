@@ -15,7 +15,7 @@ class UsersController extends Controller
     {
         $target = Gift::$target;
         
-        $gifts = Gift::orderBy('id', 'desc')->paginate(3);
+        $gifts = Gift::orderBy('id', 'desc')->paginate(4);
         
         $likes = Gift::withCount('favorite')->orderBy('favorite_count', 'desc')->paginate(3);
         

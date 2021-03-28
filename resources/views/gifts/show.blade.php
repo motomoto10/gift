@@ -71,7 +71,7 @@
                     <div class="formarea container justify-content-center">
                     {!! Form::open(['route' => ['comments.store','id' => $gift->id]]) !!}
                         <div class="form-group row  justify-content-center">
-                            {!! Form::textarea('comment', old('comment'), ['class' => 'form-control col', 'rows' => '2']) !!}
+                            {!! Form::textarea('comment', old('comment'), ['class' => 'form-control col', 'rows' => '4']) !!}
                         </div>
                         <div class="col text-center">
                             {!! Form::submit('コメント', ['class' => 'btn btn-square-pop btn-m']) !!}

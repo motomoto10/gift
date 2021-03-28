@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <script src="https://kit.fontawesome.com/c121109adb.js" crossorigin="anonymous"></script>
     </head>
         <body class="body">
 
