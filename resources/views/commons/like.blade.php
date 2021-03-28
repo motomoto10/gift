@@ -1,6 +1,8 @@
 <div class="col-12 ranking-title">
-{{ $loop->iteration}}位
-<span>{{ $like->favorite->count()}}いいね</span>
+    <div class=" rank-category">
+        {{ $loop->iteration}}位
+        <span>{{ $like->favorite->count()}}いいね</span>
+    </div>
 </div>    
     
     <div class="col-12">
