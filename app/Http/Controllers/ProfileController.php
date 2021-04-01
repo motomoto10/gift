@@ -18,7 +18,7 @@ class ProfileController extends Controller
     public function index()
     {
         $is_image = false;
-        if (Storage::disk('local')->exists('public/profile_images/' . Auth::id() . '.jpg')) {
+        if (Storage::disk('s3')->exists('profile_images/' . Auth::id() . '.jpg')) {
             $is_image = true;
         }
         return view('profile/index', ['is_image' => $is_image]);
@@ -32,7 +32,7 @@ class ProfileController extends Controller
      */
     public function store(ProfileRequest $request)
     {
-        $request->photo->storeAs('public/profile_images', Auth::id() . '.jpg');
+        $request->photo->storeAs(Storage::disk('s3')->profile_images, Auth::id() . '.jpg');
 
         return redirect('profile')->with('success', '新しいプロフィールを登録しました');
     }
