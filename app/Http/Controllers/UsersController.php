@@ -68,8 +68,6 @@ class UsersController extends Controller
     {
         $user = User::findOrFail($id);
         
-        
-        
         $genders = User::$genders;
         
         if (Storage::disk('s3')->exists('profile_images/' . Auth::id() . '.jpg')) {
