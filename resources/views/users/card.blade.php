@@ -1,9 +1,9 @@
 <div class="container mb-3">
     <div class="row justify-content-center">
         <div class="col-sm row justify-content-center justify-content-sm-end">
-                <img class="rounded img-fluid" src="{{$path}}"width="200px" height="200px" alt="">
+                <img class="rounded img-fluid" src="{{$path}}"width="100px" height="100px" alt="">
         </div>
-        <div class="col-sm row justify-content-center justify-content-sm-start">
+        <div class="col-sm row justify-content-center justify-content-sm-start ml-3">
             <div>
             
             <div class="user_other font-weight-bold mt-3">{{ $user->name }}</div>
