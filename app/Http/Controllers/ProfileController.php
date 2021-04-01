@@ -17,13 +17,20 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $disk = Storage::disk('s3');
-        
         $is_image = false;
-        if ($disk->exists('profile_images/' . Auth::id() . '.jpg')) {
+        if (Storage::disk('s3')->exists('profile_images/' . Auth::id() . '.jpg')) {
             $is_image = true;
+            
+        $path = Storage::disk('s3')->url('profile_images/' . Auth::id() .'.jpg');
+        
+            return view('profile/index', ['is_image' => $is_image, 'path' =>$path]);
+        }else{
+            
+        $path = asset('img/user.svg');
+           
+            return view('profile/index', ['is_image' => $is_image, 'path' =>$path]);
         }
-        return view('profile/index', ['is_image' => $is_image]);
+        
     }
     
     /**
