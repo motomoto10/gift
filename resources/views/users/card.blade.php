@@ -1,7 +1,7 @@
 <div class="container mb-3">
     <div class="row justify-content-center">
         <div class="col-sm row justify-content-center justify-content-sm-end">
-                <img class="rounded img-fluid" src="/storage/profile_images/{{ $user->id }}.jpg"width="200px" height="200px" alt="">
+                <img class="rounded img-fluid" src="{{$path}}"width="200px" height="200px" alt="">
         </div>
         <div class="col-sm row justify-content-center justify-content-sm-start">
             <div>

@@ -8,6 +8,8 @@ use App\Http\Requests\UserRequest;
 
 use App\User;
 use App\Gift;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
@@ -19,11 +21,19 @@ class UsersController extends Controller
         
         $likes = Gift::withCount('favorite')->orderBy('favorite_count', 'desc')->paginate(3);
         
+        
+        if (Storage::disk('s3')->exists('profile_images/' . Auth::id() . '.jpg')) {
+        $path = Storage::disk('s3')->url('profile_images/' . Auth::id() .'.jpg');
+        }else{
+        $path = asset('img/user.svg');
+        }
+        
         // ユーザ一覧ビューでそれを表示
         return view('users.index', [
             'gifts' => $gifts,
             'likes' => $likes,
-            'target'=> $target
+            'target'=> $target,
+            'path'=> $path
         ]);
 
     }
@@ -39,11 +49,18 @@ class UsersController extends Controller
         
         $likes = $user->favorites()->orderBy('created_at', 'desc')->paginate(10);
         
+        if (Storage::disk('s3')->exists('profile_images/' . Auth::id() . '.jpg')) {
+        $path = Storage::disk('s3')->url('profile_images/' . Auth::id() .'.jpg');
+        }else{
+        $path = asset('img/user.svg');
+        }
+        
         // ユーザ詳細ビューでそれを表示
         return view('users.show', [
             'user' => $user,
             'gifts'=> $gifts,
             'likes' => $likes,
+            'path'=> $path
 
         ]);
     }
@@ -55,7 +72,13 @@ class UsersController extends Controller
         
         $genders = User::$genders;
         
-        return view('users.edit',compact('user','genders'));
+        if (Storage::disk('s3')->exists('profile_images/' . Auth::id() . '.jpg')) {
+        $path = Storage::disk('s3')->url('profile_images/' . Auth::id() .'.jpg');
+        }else{
+        $path = asset('img/user.svg');
+        }
+        
+        return view('users.edit',compact('user','genders','path'));
         
     }
     
