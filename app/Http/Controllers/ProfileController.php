@@ -36,7 +36,7 @@ class ProfileController extends Controller
     {
         $disk = Storage::disk('s3');
         
-        $request->photo->storeAs($disk->profile_images, Auth::id() . '.jpg');
+        $request->photo->storeAs(profile_images, Auth::id() . '.jpg',$disk);
 
         return redirect('profile')->with('success', '新しいプロフィールを登録しました');
     }
