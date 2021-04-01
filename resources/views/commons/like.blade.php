@@ -10,7 +10,7 @@
                 <div class="card-header">
                     <a href="/users/{{ $like->user->id}}">
                         <div class="row">
-                    <img class="rounded img-fluid" src=" {{asset('img/user.svg')}}"width="40px" height="40px" alt="">
+                    <img class="rounded img-fluid" src=" {{asset('img/user.png')}}"width="40px" height="40px" alt="">
                     <span class="text-dark mx-2 my-auto">{{ $like->user->name }}</span>
                         </div>
                     </a>
