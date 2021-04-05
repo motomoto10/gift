@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests\UserRequest;
+use Illuminate\Support\Arr;
 
 use App\User;
 use App\Gift;
@@ -22,19 +23,45 @@ class UsersController extends Controller
         $likes = Gift::withCount('favorite')->orderBy('favorite_count', 'desc')->paginate(3);
         
         
-        // if (Storage::disk('s3')->exists('profile_images/' . Auth::id() . '.jpg')) {
-        // $path = Storage::disk('s3')->url('profile_images/' . Auth::id() .'.jpg');
-        // }else{
+	    
+	    foreach ( $gifts as $key => $value ) {
+        $path[$key] = Arr::get($gifts[$key], 'user_id');
+           
+            if (Storage::disk('s3')->exists('profile_images/' . $path[$key]. '.jpg')) {
             
+            $gift_path[$key] = Storage::disk('s3')->url('profile_images/' . $path[$key] .'.jpg');
             
-        $path = asset('img/user.svg');
-        
+            }else{
+            
+            $gift_path[$key] = asset('img/user.svg');
+            
+            }
+	        
+	   }
+	   
+	   	foreach ( $likes as $key => $value ) {
+        $path[$key] = Arr::get($likes[$key], 'user_id');
+           
+            if (Storage::disk('s3')->exists('profile_images/' . $path[$key]. '.jpg')) {
+            
+            $like_path[$key] = Storage::disk('s3')->url('profile_images/' . $path[$key] .'.jpg');
+            
+            }else{
+            
+            $like_path[$key] = asset('img/user.svg');
+            
+            }
+	        
+	   }
+	    
+	    
         // ユーザ一覧ビューでそれを表示
         return view('users.index', [
             'gifts' => $gifts,
             'likes' => $likes,
             'target'=> $target,
-            'path'=> $path
+            'gift_path'=> $gift_path,
+            'like_path'=>$like_path
         ]);
 
     }
@@ -50,21 +77,47 @@ class UsersController extends Controller
         
         $likes = $user->favorites()->orderBy('created_at', 'desc')->paginate(10);
         
-        // if (Storage::disk('s3')->exists('profile_images/' . Auth::id() . '.jpg')) {
-        // $path = Storage::disk('s3')->url('profile_images/' . Auth::id() .'.jpg');
-        // }else{
+        $user_path = $user->user_image($id);
+        
+        $gift_path = $user_path;
+        
+        // いいねの表示　短くしてモデルに書く
+        
+        if( $user->favorites->count() != 0){
+        
+        foreach ( $likes as $key => $value ) {
+        $path[$key] = Arr::get($likes[$key], 'user_id');
+           
+            if (Storage::disk('s3')->exists('profile_images/' . $path[$key]. '.jpg')) {
+            
+            $like_path[$key] = Storage::disk('s3')->url('profile_images/' . $path[$key] .'.jpg');
+            
+            }else{
+            
+            $like_path[$key] = asset('img/user.svg');
+            
+            }
+	        
+	   }
+        
+        return view('users.show', [
+            'user' => $user,
+            'gifts'=> $gifts,
+            'likes' => $likes,
+            'user_path'=> $user_path,
+            'like_path' => $like_path
+        ]);
             
             
-        $path = asset('img/user.svg');
-            
+        }
+        // いいねの表示終了
         
         // ユーザ詳細ビューでそれを表示
         return view('users.show', [
             'user' => $user,
             'gifts'=> $gifts,
             'likes' => $likes,
-            'path'=> $path
-
+            'user_path'=> $user_path,
         ]);
     }
     public function edit($id)
@@ -73,12 +126,7 @@ class UsersController extends Controller
         
         $genders = User::$genders;
         
-        // if (Storage::disk('s3')->exists('profile_images/' . Auth::id() . '.jpg')) {
-        // $path = Storage::disk('s3')->url('profile_images/' . Auth::id() .'.jpg');
-        // }else{
-            
-            
-        $path = asset('img/user.svg');
+        $path = $user->user_image($id);
         
         return view('users.edit',compact('user','genders','path'));
         

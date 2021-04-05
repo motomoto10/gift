@@ -15,16 +15,6 @@
                         <i class="icon_search"></i>
                         <div class="row my-3">
                         <!--{!! Form::label('target', 'どんな相手:', ['class' => 'col-md-3 my-auto']) !!}-->
-                        <!--<div class="col-md-9">-->
-                        <!--    <select class="form-control" name="target">-->
-                        <!--    <option selected="selected" value="">選択してください</option>-->
-                        <!--    @foreach($target as $key => $value)-->
-                        <!--        <option value="{{ $value }}"}>-->
-                        <!--        {{ $value }}-->
-                        <!--        </option>-->
-                        <!--    @endforeach-->
-                        <!--    </select>-->
-                        <!--</div>-->
                         </div>
                     </div>
                         <div class="row justify-content-center">
@@ -144,6 +134,7 @@
           </div>
           <div class="row">
             @foreach($likes as $like)
+                @include('commons.rank')
                 @include('commons.like')
             @endforeach
           </div>

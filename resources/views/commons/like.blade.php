@@ -1,16 +1,10 @@
-<div class="col-12 ranking-title">
-    <div class=" rank-category">
-        {{ $loop->iteration}}位
-        <span>{{ $like->favorite->count()}}いいね</span>
-    </div>
-</div>    
-    
+   
     <div class="col-12">
             <div class="card shadow p-2 bg-white rounded mb-4">
                 <div class="card-header">
                     <a href="/users/{{ $like->user->id}}">
                         <div class="row">
-                    <img class="rounded img-fluid" src=" {{asset('img/user.png')}}"width="40px" height="40px" alt="">
+                    <img class="rounded img-fluid" src=" {{asset($like_path[ $loop->index])}}"width="40px" height="40px" alt="">
                     <span class="text-dark mx-2 my-auto">{{ $like->user->name }}</span>
                         </div>
                     </a>

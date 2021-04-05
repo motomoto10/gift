@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable
 {
@@ -89,6 +90,38 @@ class User extends Authenticatable
         // お気に入り中giftの中に $giftIdのものが存在するか
         return $this->favorites()->where('gift_id', $giftId)->exists();
     }
+    
+    public function user_image($id){
+        
+        if (Storage::disk('s3')->exists('profile_images/' . $id. '.jpg')) {
+        
+        $path = Storage::disk('s3')->url('profile_images/' . $id .'.jpg');
+        
+        }else{
+        
+        $path = asset('img/user.svg');
+        
+        }
+        
+        return $path;
+        
+    }
+    
+
+    
+    public function createImagePath($gifts)
+    {
+        foreach ( $gifts as $key => $value ) {
+           $path[$key] = Arr::get($gifts[$key], 'user_id');
+        }
+        $path[0] = Storage::disk('s3')->url('profile_images/' . $gifts[0]->user_id .'.jpg');
+        $path[1] = Storage::disk('s3')->url('profile_images/' . $gifts[1]->user_id .'.jpg');
+        $path[2] = Storage::disk('s3')->url('profile_images/' . $gifts[2]->user_id .'.jpg');
+        $path[3] = Storage::disk('s3')->url('profile_images/' . $gifts[3]->user_id .'.jpg');
+        
+     return $path;   
+    }
+    
     
     protected $dates = ['born'];
 }

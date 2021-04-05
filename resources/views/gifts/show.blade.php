@@ -5,7 +5,7 @@
 <div class="container mb-3">
         <div class="row justify-content-center">
         <div class="col-sm row justify-content-center justify-content-sm-end">
-                <img class="rounded img-fluid" src="/storage/profile_images/{{ $gift->user->id }}.jpg"width="200px" height="200px" alt="">
+                <img class="rounded img-fluid" src="{{$user_path}}"width="200px" height="200px" alt="">
         </div>
         <div class="col-sm row justify-content-center justify-content-sm-start">
             <div>
@@ -44,7 +44,7 @@
 @endif
 <div class="container">
     <div class="row justify-content-center">
-        @include('commons.gift')
+        @include('commons.user_gift')
         <div class="col-12 box_comment_home">
             <div class="row">
                     @foreach($comments as $comment)
@@ -56,7 +56,7 @@
                                 <!--{!! Form::close() !!}-->
                                 <!--</p>-->
                           <div class="faceicon">
-                            <img class="rounded img-fluid" src="/storage/profile_images/{{ $comment->user_id }}.jpg"width="100px" height="100px" alt="">
+                            <img class="rounded img-fluid" src="{{asset($comment_path[$loop->index])}}"width="100px" height="100px" alt="">
                           </div>
                           <div class="chatting">
                             <div class="says">

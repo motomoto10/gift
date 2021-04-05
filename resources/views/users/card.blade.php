@@ -1,7 +1,7 @@
 <div class="container mb-3">
     <div class="row justify-content-center">
         <div class="col-sm row justify-content-center justify-content-sm-end">
-                <img class="rounded img-fluid" src="{{$path}}"width="100px" height="100px" alt="">
+                <img class="rounded img-fluid" src="{{$user_path}}"width="150px" height="150px" alt="">
         </div>
         <div class="col-sm row justify-content-center justify-content-sm-start ml-3">
             <div>

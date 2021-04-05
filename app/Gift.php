@@ -103,4 +103,21 @@ class Gift extends Model
         if ($anniversaries) return $query->where('anniversary', 'like', '%' . $anniversaries . '%');
     
     }
+    
+    public function s3_image($array)
+    {
+        foreach ( $array as $key => $value ) {
+        $path[$key] = Arr::get($array[$key], 'user_id');
+           
+            if (Storage::disk('s3')->exists('profile_images/' . $path[$key]. '.jpg')) {
+            
+            $gift_path[$key] = Storage::disk('s3')->url('profile_images/' . $path[$key] .'.jpg');
+            
+            }else{
+            
+            $gift_path[$key] = asset('img/user.svg');
+            
+            }
+        }
+    }
 }
