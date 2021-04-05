@@ -18,7 +18,7 @@ class UserRequest extends FormRequest
         return true;
     }
     
-        private const GUEST_USER_ID = 3;
+        private const GUEST_USER_ID = 1;
 
     /**
      * Get the validation rules that apply to the request.
